@@ -1,9 +1,10 @@
 ---
-title: "FileImportFunctions"
+title: "antibiotics"
 date: "`r format(Sys.Date())`"
 author:
 - Douglas Campbell^1^*
 - Carlie Barnhill^1^*
+- Ruby Muzzatti^1^*
 output:
   bookdown::html_document2:
     code_folding: show
@@ -52,8 +53,8 @@ knitr::opts_chunk$set(fig.path='Figs/')
 library(tidyverse) #core packages from Tidyverse
 library(googledrive) #access to GoogleDrive
 library(googlesheets4) #access to GoogleSheets
-library(data.table) #fast data handling;  complement to tidverse dplyr
-library(lubridate) #tidyverse handling dates & times
+##library(data.table) #fast data handling;  complement to tidverse dplyr
+##library(lubridate) #tidyverse handling dates & times
 ```
 
 ## InLine Citations of software packages added through the 'citr' option under 'Addins'.  
@@ -99,18 +100,17 @@ Repeatedly reading from GoogleDrive can provoke a throttle from Google.
 googlesheets4::gs4_deauth()
 
 #URL or ID of a GoogleSheet readable by anyone (with a link)
-Catalog <- googlesheets4::read_sheet("https://docs.google.com/spreadsheets/d/1ZXpwR7Gfto-uRzVdXzMpQF4frbrvMLH_IyLqonFZRSw/edit#gid=0") %>%
+DataSheet <- googlesheets4::read_sheet("https://docs.google.com/spreadsheets/d/1J6Ip_VzQCpMvZSZFiQVm0LSXW6wn2uSi7_NohkacjJ0/edit?usp=sharing")
   # googlesheets4::read_sheet has a  "feature" to set the type of columns it can't parse to a list.
   # ggplot/dplyr does not like working with a dataframe of lists.
   # In this case variable column WL is set to a list since some values are numbers, some are strings, some are blank.
   # To fix this, first drop all rows missing WL, then unlist.
   # Must first drop NA rows since unlist will collapse NULL lists, then the unlisted WL is a shorter length than original WL column, which mutate does not like.
-  drop_na(WL) %>%
-  mutate(WL = unlist(WL))
+  
 
 
-Catalog <- as.data.frame(Catalog) %>%
-  mutate(ExpDate = lubridate::ymd(ExpDate))
+#Catalog <- as.data.frame(Catalog) %>%
+  #mutate(ExpDate = lubridate::ymd(ExpDate))
 ```
 
 ## Function using data.table::fread to skip the beginning comments and start reading file after key word string set as variable Skip.  
