@@ -99,7 +99,7 @@ Repeatedly reading from GoogleDrive can provoke a throttle from Google.
 googlesheets4::gs4_deauth()
 
 #URL or ID of a GoogleSheet readable by anyone (with a link)
-Catalog <- googlesheets4::read_sheet("https://docs.google.com/spreadsheets/d/1J6Ip_VzQCpMvZSZFiQVm0LSXW6wn2uSi7_NohkacjJ0/edit?usp=sharing") 
+Catalog <- googlesheets4::read_sheet("https://docs.google.com/spreadsheets/d/1J6Ip_VzQCpMvZSZFiQVm0LSXW6wn2uSi7_NohkacjJ0/edit?gid=0#gid=0") 
   # googlesheets4::read_sheet has a  "feature" to set the type of columns it can't parse to a list.
   # ggplot/dplyr does not like working with a dataframe of lists.
   # In this case variable column WL is set to a list since some values are numbers, some are strings, some are blank.
@@ -111,7 +111,7 @@ Catalog <- googlesheets4::read_sheet("https://docs.google.com/spreadsheets/d/1J6
 antibiotic <- as.data.frame(Catalog) 
   ##mutate(ExpDate = lubridate::ymd(ExpDate))
 ```
-
+#20241116, Avery MacKinnon pushing plate data for In2 and Out 3 from google sheet/
 ## Function using data.table::fread to skip the beginning comments and start reading file after key word string set as variable Skip.  
 Function creates a new variable column Filename whose value will equal function input Flnm.
 This is useful for when reading in multiple files and tagging each data row with the name of the source file.
