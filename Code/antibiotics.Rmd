@@ -98,7 +98,7 @@ Repeatedly reading from GoogleDrive can provoke a throttle from Google.
 
 #Instead of sending a token, googlesheets4 will send an API key. This can be used to access public resources for which no Google sign-in is required. 
 googlesheets4::gs4_deauth()
-
+#
 #URL or ID of a GoogleSheet readable by anyone (with a link)
 DataSheet <- googlesheets4::read_sheet("https://docs.google.com/spreadsheets/d/1J6Ip_VzQCpMvZSZFiQVm0LSXW6wn2uSi7_NohkacjJ0/edit?gid=0#gid=0")
   # googlesheets4::read_sheet has a  "feature" to set the type of columns it can't parse to a list.
