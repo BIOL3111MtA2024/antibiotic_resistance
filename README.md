@@ -83,5 +83,4 @@ Project notes, other documentation, etc.
 
 Output from knit .Rmd, Figures and tables produced from analysis.
 Do not generate swarms of superfluous data exploration figures.
-.
 
