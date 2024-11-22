@@ -105,7 +105,8 @@ Catalog <- googlesheets4::read_sheet("https://docs.google.com/spreadsheets/d/1J6
   # In this case variable column WL is set to a list since some values are numbers, some are strings, some are blank.
   # To fix this, first drop all rows missing WL, then unlist.
   # Must first drop NA rows since unlist will collapse NULL lists, then the unlisted WL is a shorter length than original WL column, which mutate does not like.
- 
+ #updated
+
 
 
 antibiotic <- as.data.frame(Catalog) 
