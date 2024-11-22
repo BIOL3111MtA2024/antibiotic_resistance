@@ -144,6 +144,12 @@ MultiData <- MultiFiles %>%
   map_df(~fread_plus(Flnm = ., Skip = "key"))
 ```
 
+#Results, Ruby
+Attempting to pull in IMG_2381.jpeg from 2024_10_28 folder
+```{r}
+knitr::include_graphics("IMG_2381.jpeg")
+```
+
 
 \newpage
 
