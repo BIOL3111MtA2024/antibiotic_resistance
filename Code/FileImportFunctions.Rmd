@@ -115,6 +115,7 @@ antibiotic <- as.data.frame(Catalog)
 ```
 #20241116, Avery MacKinnon pushing plate data for In2 and Out3 from google sheet/
 #20241122, Avery MacKinnon pushing refined plate data for In2 and Out3 from google sheet
+#20241122, Samantha Hallett pushing plate data for In3 from google sheet
 >>>>>>> 4ffdc22d0bc4647c40c92a5d2b57ccc8c0776488
 ## Function using data.table::fread to skip the beginning comments and start reading file after key word string set as variable Skip.  
 Function creates a new variable column Filename whose value will equal function input Flnm.
