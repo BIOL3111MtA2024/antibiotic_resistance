@@ -114,6 +114,7 @@ antibiotic <- as.data.frame(Catalog)
   ##mutate(ExpDate = lubridate::ymd(ExpDate))
 ```
 #20241116, Avery MacKinnon pushing plate data for In2 and Out 3 from google sheet/
+#20241122, Samantha Hallett push data for In3 from google sheet
 ## Function using data.table::fread to skip the beginning comments and start reading file after key word string set as variable Skip.  
 Function creates a new variable column Filename whose value will equal function input Flnm.
 This is useful for when reading in multiple files and tagging each data row with the name of the source file.
