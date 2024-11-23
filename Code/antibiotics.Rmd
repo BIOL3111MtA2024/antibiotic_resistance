@@ -154,4 +154,50 @@ October 25, 2024: Opaque cream colour lawn is seen in Ampicillin Out 2 (a and b)
 successfully found 2 ways to open a photo in the document, going to leave both in for now until I can determine which is best for knitting the project.
 \newpage
 
+#Results, Samantha
+```{r load Catalog direct from googlesheet, results = "hide"}
+
+#Instead of sending a token, googlesheets4 will send an API key. This can be used to access public resources for which no Google sign-in is required. 
+googlesheets4::gs4_deauth()
+
+#URL or ID of a GoogleSheet readable by anyone (with a link)
+Catalog <- googlesheets4::read_sheet("https://docs.google.com/spreadsheets/d/1J6Ip_VzQCpMvZSZFiQVm0LSXW6wn2uSi7_NohkacjJ0/edit?gid=0#gid=0") 
+  # googlesheets4::read_sheet has a  "feature" to set the type of columns it can't parse to a list.
+  # ggplot/dplyr does not like working with a dataframe of lists.
+  # In this case variable column WL is set to a list since some values are numbers, some are strings, some are blank.
+  # To fix this, first drop all rows missing WL, then unlist.
+  # Must first drop NA rows since unlist will collapse NULL lists, then the unlisted WL is a shorter length than original WL column, which mutate does not like.
+ #updagit config --global commit.gpgSign false
+
+
+
+
+antibiotic <- as.data.frame(Catalog) 
+  ##mutate(ExpDate = lubridate::ymd(ExpDate))
+```
+library needed for my results
+```{r}
+library(googlesheets4)
+library(dplyr)
+library(tidyverse)  #'tidyverse' tools for data handling
+library(knitr)
+library(ggmap) #tools for using maps from GoogleEarth & GoogleMaps
+```
+
+```{r}
+kable(antibiotic)
+```
+clean the data
+```{r}
+clean_data <- Catalog %>%
+  filter(Colony_YesNo == "Yes" & !is.na(AbxConcReached_mgmL))
+```
+view data to make sure it worked
+```{r}
+head(clean_data)
+```
+
+
+
+
 # Bibliography
