@@ -196,8 +196,140 @@ view data to make sure it worked
 ```{r}
 head(clean_data)
 ```
+calculate the average effective concentration per antibiotic and day
+```{r}
+average_concentration <- clean_data %>%
+  group_by(PlateID, ObservationDate) %>%
+  summarise(Avg_Conc = mean(AbxConcReached_mgmL, na.rm = TRUE))
 
+```
+view the results
+```{r}
+head(average_concentration)
+```
+```{r}
+# Check the class of the problematic columns
+class(average_concentration$ObservationDate)
+class(average_concentration$Avg_Conc)
 
+# Inspect the first few rows of the data frame
+head(average_concentration)
+
+# Check for nested lists or other unusual structures
+str(average_concentration$ObservationDate)
+str(average_concentration$Avg_Conc)
+```
+```{r}
+# Calculate the average concentration for each antibiotic and day
+average_concentration <- clean_data %>%
+  group_by(PlateID, ObservationDate) %>%
+  summarise(Avg_Conc = mean(AbxConcReached_mgmL, na.rm = TRUE))
+
+# View the result
+head(average_concentration)
+
+```
+```{r}
+# Visualize the average concentration over time for each antibiotic
+ggplot(average_concentration, aes(x = as.Date(ObservationDate), y = Avg_Conc, color = PlateID)) +
+  geom_line() +
+  labs(title = "Average Effective Concentration Per Antibiotic Over Time",
+       x = "Observation Date",
+       y = "Average Concentration (mg/mL)") +
+  theme_minimal()
+```
+```{r}
+# Check the first few values of ObservationDate
+head(clean_data$ObservationDate)
+```
+```{r}
+# If ObservationDate is numeric, convert to Date using an origin
+clean_data$ObservationDate <- as.Date(clean_data$ObservationDate, origin = "1970-01-01")
+```
+```{r}
+# Now, plot the data
+ggplot(average_concentration, aes(x = ObservationDate, y = Avg_Conc, color = PlateID)) +
+  geom_line() +
+  labs(title = "Average Effective Concentration Per Antibiotic Over Time",
+       x = "Observation Date",
+       y = "Average Concentration (mg/mL)") +
+  theme_minimal()
+```
+```{r}
+str(average_concentration)
+```
+```{r}
+average_concentration$ObservationDate <- as.Date(average_concentration$ObservationDate, format = "%Y-%m-%d")
+```
+```{r}
+average_concentration$Avg_Conc <- as.numeric(average_concentration$Avg_Conc)
+```
+```{r}
+unique(average_concentration$Avg_Conc)
+```
+```{r}
+average_concentration <- average_concentration[complete.cases(average_concentration$ObservationDate, average_concentration$Avg_Conc), ]
+```
+```{r}
+# Check the class of the problematic columns
+class(average_concentration$ObservationDate)
+class(average_concentration$Avg_Conc)
+
+# Inspect the first few rows of the data frame
+head(average_concentration)
+
+# Check for nested lists or other unusual structures
+str(average_concentration$ObservationDate)
+str(average_concentration$Avg_Conc)
+
+```
+```{r}
+# If ObservationDate is a list, extract the correct value
+average_concentration$ObservationDate <- unlist(average_concentration$ObservationDate)
+```
+```{r}
+# Ensure Avg_Conc is numeric and unlisted if necessary
+average_concentration$Avg_Conc <- as.numeric(unlist(average_concentration$Avg_Conc))
+```
+```{r}
+# Check if there are non-numeric entries in Avg_Conc
+summary(average_concentration$Avg_Conc)
+```
+```{r}
+ggplot(average_concentration, aes(x = ObservationDate, y = Avg_Conc, color = PlateID)) +
+  geom_point() +
+  labs(title = "Average Effective Concentration Per Antibiotic Over Time",
+       x = "Observation Date",
+       y = "Average Concentration (mg/mL)") +
+  theme_minimal()
+```
+```{r}
+# Ensure PlateID is a factor
+average_concentration$PlateID <- as.factor(average_concentration$PlateID)
+```
+```{r}
+str(average_concentration$PlateID)
+```
+```{r}
+# If PlateID is a list, unlist it to get a simple vector
+average_concentration$PlateID <- as.factor(unlist(average_concentration$PlateID))
+```
+```{r}
+# Check the structure again
+str(average_concentration$PlateID)
+
+# Verify that it is now a factor
+class(average_concentration$PlateID)
+
+```
+```{r}
+ggplot(average_concentration, aes(x = ObservationDate, y = Avg_Conc, color = PlateID)) +
+  geom_line() +
+  labs(title = "Average Effective Concentration Per Antibiotic Over Time",
+       x = "Observation Date",
+       y = "Average Concentration (mg/mL)") +
+  theme_minimal()
+```
 
 
 # Bibliography
