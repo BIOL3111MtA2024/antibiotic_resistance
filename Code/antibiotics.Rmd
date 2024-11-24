@@ -5,6 +5,7 @@ author:
 - Douglas Campbell^1^*
 - Carlie Barnhill^1^*
 - Ruby Muzzatti^1^*
+- Avery MacKinnon^1^*
 output:
   bookdown::html_document2:
     code_folding: show
@@ -37,7 +38,7 @@ DAC was supported by the Canada Research Chairs.
 
 # Overview
 File import functions read files into R objects, commonly data frames.
-I love github
+
 
 # Materials & Methods  
 ## Set chunk options
@@ -331,5 +332,15 @@ ggplot(average_concentration, aes(x = ObservationDate, y = Avg_Conc, color = Pla
   theme_minimal()
 ```
 
+#Results, Avery
+
+#Analyzing the fungi growing on the plates qualitatively
+
+#Background Research:
+#Fungi are naturally resistant to antibiotics that kill commensal bacteria (which are those naturally occuring in/on the body), and therefore when antibiotics are used there is an increased likelihood of fungal infections (Jiang et al., 2017). With less bacterial growth, there would be more resources available to the fungi. The antibiotics that we tested (ampicillin, kanamycin, streptomycin) all kill commensal bacteria. This would imply that the more bacteria growing on a plate, the less fungal growth would be observed. 
+
+#For ampicillin in particular, there are a lot of commensal bacteria that have built up resistance to the antibiotic due to its widespread use in medicine and agriculture (Gjonbalaj et. al., 2020). These bacteria have even been found to degrade ampicillin (Gjonbalaj et. al., 2020), and therefore theoretically this should lead to less fungal growth because there would be less antibiotic present and more commensal bacteria competing for the resources available in the plates. 
 
 # Bibliography
+#Jiang, T.T., Shao, T.-Y., Ang, W.X.G., Kinder, J/M., Turner, L.H., Pham, G., Whitt, J., Alenghat, T., Way, S.S., 2017. Commensal Fungi Recapitulate the Protective Benefits of Intestinal Bacteria. Cell Host & Microbe 22, 809-816.e4. https://doi.org/10.1016/j.chom.2017.10.013
+#Gjonbalaj, M., Keith, J.W., Do, M.H., Hohl, T.M., Pamer, E.G., Becattini, S., 2020. Antibiotic Degradation by Commensal Microbes Shields Pathogens. Infect Immun 88, e00012-20. https://doi.org/10.1128/IAI.00012-20
