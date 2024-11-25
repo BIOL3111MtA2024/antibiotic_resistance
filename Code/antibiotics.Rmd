@@ -5,7 +5,6 @@ author:
 - Douglas Campbell^1^*
 - Carlie Barnhill^1^*
 - Ruby Muzzatti^1^*
-- Avery MacKinnon^1^*
 output:
   bookdown::html_document2:
     code_folding: show
@@ -38,6 +37,20 @@ DAC was supported by the Canada Research Chairs.
 
 # Overview
 File import functions read files into R objects, commonly data frames.
+I love github
+
+Things Kingsley will do
+
+Relative abundance by flow type (inflow vs. outflow).
+Relative abundance by antibiotics.
+Combined abundance by flow type and antibiotics (stacked or grouped).
+Interpretation
+Inflow vs. Outflow: This will show whether the colony abundance is higher in the inflow or the outflow of your sample.
+
+Antibiotic Comparison: You will observe which antibiotic showed higher or lower bacterial counts, reflecting relative resistance or susceptibility.
+
+Combined abundance: This will show a detailed breakdown of colony abundance for each antibiotic within inflow and outflow categories.
+
 
 
 # Materials & Methods  
@@ -65,30 +78,12 @@ The cited items must be in the .bib file saved in the .Rproj folder; in this cas
 ## Source locally saved functions stored in a text file
 A text file of functions is a preliminary step towards a package, to re-use functions without repasting them.
 
-```{r source CampbellLabRFunctions.txt}
-source("FundyPhytoFunctions.txt")
-```
-```{r show equations}
-#linear equations are in base R but a user defined equation may be convenient for use in parallel with other user defined equations
-linear_eqn
-exp_eqn
-gompertz_eqn
-logistic_eqn
-
-read_plus_csv
-data_with_sources_csv
-
-```
 
 
 ## Set Project Variables  
 Try to set all user-defined variables near top of .Rmd, in one place, to avoid or limit editing of downstream code.
 Assigning project-specific values to generic variables helps with re-use of code.
-```{r set variables}
-DataIn <- "XXXX"
-TargetFile <- "YYYY"
-  
-```
+
 
 
 # Import MetaData from a GoogleSheet
@@ -97,11 +92,16 @@ The GoogleSheet interface can be tricky.
 Repeatedly reading from GoogleDrive can provoke a throttle from Google.
 ```{r load Catalog direct from googlesheet, results = "hide"}
 
+
 #Instead of sending a token, googlesheets4 will send an API key. This can be used to access public resources for which no Google sign-in is required. 
 googlesheets4::gs4_deauth()
-#
+
+
+
 #URL or ID of a GoogleSheet readable by anyone (with a link)
-DataSheet <- googlesheets4::read_sheet("https://docs.google.com/spreadsheets/d/1J6Ip_VzQCpMvZSZFiQVm0LSXW6wn2uSi7_NohkacjJ0/edit?gid=0#gid=0")
+MetaData <- googlesheets4::read_sheet("https://docs.google.com/spreadsheets/d/1J6Ip_VzQCpMvZSZFiQVm0LSXW6wn2uSi7_NohkacjJ0/edit?gid=0#gid=0", sheet = "MetaData")
+
+DataSheet <- googlesheets4::read_sheet("https://docs.google.com/spreadsheets/d/1J6Ip_VzQCpMvZSZFiQVm0LSXW6wn2uSi7_NohkacjJ0/edit?gid=0#gid=0", sheet = "Data")
   # googlesheets4::read_sheet has a  "feature" to set the type of columns it can't parse to a list.
   # ggplot/dplyr does not like working with a dataframe of lists.
   # In this case variable column WL is set to a list since some values are numbers, some are strings, some are blank.
@@ -113,6 +113,21 @@ DataSheet <- googlesheets4::read_sheet("https://docs.google.com/spreadsheets/d/1
 #Catalog <- as.data.frame(Catalog) %>%
   #mutate(ExpDate = lubridate::ymd(ExpDate))
 ```
+# Merged  DataSheet with MetaData by the value of PlateID
+```{r}
+DataMeta <- left_join(x  = DataSheet, y = MetaData, by = "PlateID")
+```
+
+
+
+```{r}
+# Relative abundance for FlowType and Antibiotic
+ flow_antibiotic_relative <- DataMeta %>%
+filter(!is.na(InOut))%>%
+    summarise(TotalCount = sum(Colony_Number, .groups = c(InOut, Antibiotic), na.rm = TRUE))%>%
+     mutate(RelativeAbundance = (TotalCount / sum(TotalCount)) * 100)
+```
+
 
 ## Function using data.table::fread to skip the beginning comments and start reading file after key word string set as variable Skip.  
 Function creates a new variable column Filename whose value will equal function input Flnm.
@@ -148,199 +163,10 @@ MultiData <- MultiFiles %>%
 #Results, Ruby
 Attempting to pull in IMG_2381.jpeg from 2024_10_28 folder
 ```{r}
-knitr::include_graphics("~/Documents/github/antibiotic_resistance/Data/Images/2024_10_28/IMG_2381.jpeg")
+knitr::include_graphics("IMG_2381.jpeg")
 ```
 October 25, 2024: Opaque cream colour lawn is seen in Ampicillin Out 2 (a and b), Out 3 (a, b, c), Out 1 (a, b, c). Semi opaque cream colour lawn in Ampicillin Out 2 (c), In 2 (a, b), In 1 (a, b, c), In 3 (a, b, c).
-! ["image caption"](~/Documents/github/antibiotic_resistance/Data/Images/2024_10_28/IMG_2381.jpeg)
-successfully found 2 ways to open a photo in the document, going to leave both in for now until I can determine which is best for knitting the project.
+
 \newpage
 
-#Results, Samantha
-```{r load Catalog direct from googlesheet, results = "hide"}
-
-#Instead of sending a token, googlesheets4 will send an API key. This can be used to access public resources for which no Google sign-in is required. 
-googlesheets4::gs4_deauth()
-
-#URL or ID of a GoogleSheet readable by anyone (with a link)
-Catalog <- googlesheets4::read_sheet("https://docs.google.com/spreadsheets/d/1J6Ip_VzQCpMvZSZFiQVm0LSXW6wn2uSi7_NohkacjJ0/edit?gid=0#gid=0") 
-  # googlesheets4::read_sheet has a  "feature" to set the type of columns it can't parse to a list.
-  # ggplot/dplyr does not like working with a dataframe of lists.
-  # In this case variable column WL is set to a list since some values are numbers, some are strings, some are blank.
-  # To fix this, first drop all rows missing WL, then unlist.
-  # Must first drop NA rows since unlist will collapse NULL lists, then the unlisted WL is a shorter length than original WL column, which mutate does not like.
- #updagit config --global commit.gpgSign false
-
-
-
-
-antibiotic <- as.data.frame(Catalog) 
-  ##mutate(ExpDate = lubridate::ymd(ExpDate))
-```
-library needed for my results
-```{r}
-library(googlesheets4)
-library(dplyr)
-library(tidyverse)  #'tidyverse' tools for data handling
-library(knitr)
-library(ggmap) #tools for using maps from GoogleEarth & GoogleMaps
-```
-
-```{r}
-kable(antibiotic)
-```
-clean the data
-```{r}
-clean_data <- Catalog %>%
-  filter(Colony_YesNo == "Yes" & !is.na(AbxConcReached_mgmL))
-```
-view data to make sure it worked
-```{r}
-head(clean_data)
-```
-calculate the average effective concentration per antibiotic and day
-```{r}
-average_concentration <- clean_data %>%
-  group_by(PlateID, ObservationDate) %>%
-  summarise(Avg_Conc = mean(AbxConcReached_mgmL, na.rm = TRUE))
-
-```
-view the results
-```{r}
-head(average_concentration)
-```
-```{r}
-# Check the class of the problematic columns
-class(average_concentration$ObservationDate)
-class(average_concentration$Avg_Conc)
-
-# Inspect the first few rows of the data frame
-head(average_concentration)
-
-# Check for nested lists or other unusual structures
-str(average_concentration$ObservationDate)
-str(average_concentration$Avg_Conc)
-```
-```{r}
-# Calculate the average concentration for each antibiotic and day
-average_concentration <- clean_data %>%
-  group_by(PlateID, ObservationDate) %>%
-  summarise(Avg_Conc = mean(AbxConcReached_mgmL, na.rm = TRUE))
-
-# View the result
-head(average_concentration)
-
-```
-```{r}
-# Visualize the average concentration over time for each antibiotic
-ggplot(average_concentration, aes(x = as.Date(ObservationDate), y = Avg_Conc, color = PlateID)) +
-  geom_line() +
-  labs(title = "Average Effective Concentration Per Antibiotic Over Time",
-       x = "Observation Date",
-       y = "Average Concentration (mg/mL)") +
-  theme_minimal()
-```
-```{r}
-# Check the first few values of ObservationDate
-head(clean_data$ObservationDate)
-```
-```{r}
-# If ObservationDate is numeric, convert to Date using an origin
-clean_data$ObservationDate <- as.Date(clean_data$ObservationDate, origin = "1970-01-01")
-```
-```{r}
-# Now, plot the data
-ggplot(average_concentration, aes(x = ObservationDate, y = Avg_Conc, color = PlateID)) +
-  geom_line() +
-  labs(title = "Average Effective Concentration Per Antibiotic Over Time",
-       x = "Observation Date",
-       y = "Average Concentration (mg/mL)") +
-  theme_minimal()
-```
-```{r}
-str(average_concentration)
-```
-```{r}
-average_concentration$ObservationDate <- as.Date(average_concentration$ObservationDate, format = "%Y-%m-%d")
-```
-```{r}
-average_concentration$Avg_Conc <- as.numeric(average_concentration$Avg_Conc)
-```
-```{r}
-unique(average_concentration$Avg_Conc)
-```
-```{r}
-average_concentration <- average_concentration[complete.cases(average_concentration$ObservationDate, average_concentration$Avg_Conc), ]
-```
-```{r}
-# Check the class of the problematic columns
-class(average_concentration$ObservationDate)
-class(average_concentration$Avg_Conc)
-
-# Inspect the first few rows of the data frame
-head(average_concentration)
-
-# Check for nested lists or other unusual structures
-str(average_concentration$ObservationDate)
-str(average_concentration$Avg_Conc)
-
-```
-```{r}
-# If ObservationDate is a list, extract the correct value
-average_concentration$ObservationDate <- unlist(average_concentration$ObservationDate)
-```
-```{r}
-# Ensure Avg_Conc is numeric and unlisted if necessary
-average_concentration$Avg_Conc <- as.numeric(unlist(average_concentration$Avg_Conc))
-```
-```{r}
-# Check if there are non-numeric entries in Avg_Conc
-summary(average_concentration$Avg_Conc)
-```
-```{r}
-ggplot(average_concentration, aes(x = ObservationDate, y = Avg_Conc, color = PlateID)) +
-  geom_point() +
-  labs(title = "Average Effective Concentration Per Antibiotic Over Time",
-       x = "Observation Date",
-       y = "Average Concentration (mg/mL)") +
-  theme_minimal()
-```
-```{r}
-# Ensure PlateID is a factor
-average_concentration$PlateID <- as.factor(average_concentration$PlateID)
-```
-```{r}
-str(average_concentration$PlateID)
-```
-```{r}
-# If PlateID is a list, unlist it to get a simple vector
-average_concentration$PlateID <- as.factor(unlist(average_concentration$PlateID))
-```
-```{r}
-# Check the structure again
-str(average_concentration$PlateID)
-
-# Verify that it is now a factor
-class(average_concentration$PlateID)
-
-```
-```{r}
-ggplot(average_concentration, aes(x = ObservationDate, y = Avg_Conc, color = PlateID)) +
-  geom_line() +
-  labs(title = "Average Effective Concentration Per Antibiotic Over Time",
-       x = "Observation Date",
-       y = "Average Concentration (mg/mL)") +
-  theme_minimal()
-```
-
-#Results, Avery
-
-#Analyzing the fungi growing on the plates qualitatively
-
-#Background Research:
-#Fungi are naturally resistant to antibiotics that kill commensal bacteria (which are those naturally occuring in/on the body), and therefore when antibiotics are used there is an increased likelihood of fungal infections (Jiang et al., 2017). With less bacterial growth, there would be more resources available to the fungi. The antibiotics that we tested (ampicillin, kanamycin, streptomycin) all kill commensal bacteria. This would imply that the more bacteria growing on a plate, the less fungal growth would be observed. 
-
-#For ampicillin in particular, there are a lot of commensal bacteria that have built up resistance to the antibiotic due to its widespread use in medicine and agriculture (Gjonbalaj et. al., 2020). These bacteria have even been found to degrade ampicillin (Gjonbalaj et. al., 2020), and therefore theoretically this should lead to less fungal growth because there would be less antibiotic present and more commensal bacteria competing for the resources available in the plates. 
-
 # Bibliography
-#Jiang, T.T., Shao, T.-Y., Ang, W.X.G., Kinder, J/M., Turner, L.H., Pham, G., Whitt, J., Alenghat, T., Way, S.S., 2017. Commensal Fungi Recapitulate the Protective Benefits of Intestinal Bacteria. Cell Host & Microbe 22, 809-816.e4. https://doi.org/10.1016/j.chom.2017.10.013
-#Gjonbalaj, M., Keith, J.W., Do, M.H., Hohl, T.M., Pamer, E.G., Becattini, S., 2020. Antibiotic Degradation by Commensal Microbes Shields Pathogens. Infect Immun 88, e00012-20. https://doi.org/10.1128/IAI.00012-20
