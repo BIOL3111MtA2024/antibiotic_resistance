@@ -41,9 +41,9 @@ I love github
 
 Things Kingsley will do
 
-Relative abundance by flow type (inflow vs. outflow).
-Relative abundance by antibiotics.
-Combined abundance by flow type and antibiotics (stacked or grouped).
+Relative abundance of colonies by flow type (inflow vs. outflow).
+Relative abundance of colonies by antibiotics.
+Combined abundance of colonies by flow type and antibiotics (stacked or grouped).
 Interpretation
 Inflow vs. Outflow: This will show whether the colony abundance is higher in the inflow or the outflow of your sample.
 
@@ -51,7 +51,7 @@ Antibiotic Comparison: You will observe which antibiotic showed higher or lower 
 
 Combined abundance: This will show a detailed breakdown of colony abundance for each antibiotic within inflow and outflow categories.
 
-
+Note, Kingsley is excluding the colonies in a  lawn becaause  a lawn contains infinity number of colonies
 
 # Materials & Methods  
 ## Set chunk options
@@ -124,41 +124,23 @@ DataMeta <- left_join(x  = DataSheet, y = MetaData, by = "PlateID")
 # Relative abundance for FlowType and Antibiotic
  flow_antibiotic_relative <- DataMeta %>%
 filter(!is.na(InOut))%>%
-    summarise(TotalCount = sum(Colony_Number, .groups = c(InOut, Antibiotic), na.rm = TRUE))%>%
-     mutate(RelativeAbundance = (TotalCount / sum(TotalCount)) * 100)
+  group_by(Antibiotic, InOut)%>%
+    summarise(TotalCount = sum(Colony_Number, na.rm = TRUE)) %>%
+  ungroup()
+                               
+                               
+       #                        , .by = c() , ))%>%
+     #mutate(RelativeAbundance = (TotalCount / sum(TotalCount)) * 100)
+```
+
+```{r}
+flow_antibiotic_relative %>%
+  ggplot()+
+  geom_bar(aes(x = Antibiotic, y = TotalCount, colour = InOut, fill = InOut ), stat = "identity")
 ```
 
 
-## Function using data.table::fread to skip the beginning comments and start reading file after key word string set as variable Skip.  
-Function creates a new variable column Filename whose value will equal function input Flnm.
-This is useful for when reading in multiple files and tagging each data row with the name of the source file.
-```{r fread_plus}
-fread_plus <- function(Flnm, Skip){data.table::fread(file = Flnm, skip = Skip) %>%
-    mutate(Filename = Flnm, CDateTime = ymd_hms(file.info(Flnm)$ctime))
-}
-```
 
-```{r Read single TargetFile}
-TargetData <- fread_plus(Flnm = TargetFile, Skip = "key") %>%
-select(-c(V5))
-
-TargetData[1:10,]
-```
-
-Vector of files for Project that are saved in folder DataIn, containing the pattern Project in their file name
-```{r MultiCulti files}
-MultiFiles <- list.files(path = DataIn, pattern = Project, full.names = TRUE)
-
-#check file names
-MultiFiles
-
-```
-
-Read multiple parallel files contained in DataIn using purrr::map to step through file names in MultiFiles vector
-```{r read multiple files}
-MultiData <- MultiFiles %>%
-  map_df(~fread_plus(Flnm = ., Skip = "key"))
-```
 
 #Results, Ruby
 Attempting to pull in IMG_2381.jpeg from 2024_10_28 folder
