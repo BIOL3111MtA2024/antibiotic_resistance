@@ -72,7 +72,6 @@ library(googlesheets4) #access to GoogleSheets
 ##library(lubridate) #tidyverse handling dates & times
 library(knitr)
 library(ggmap) #tools for using maps from GoogleEarth & GoogleMaps
-library(cowplot) #ruby using for panel figures
 ```
 
 ## InLine Citations of software packages added through the 'citr' option under 'Addins'.  
@@ -216,16 +215,6 @@ knitr::include_graphics("~/Documents/github/antibiotic_resistance/Data/Images/20
 October 29, 2024: See in Kanamycin Out 3 (b, c), Streptomycin Out 3 (a, b, c). Colonies seen on Out 3 (c). See IMG_2394.
 ```{r IMG_2394, fig.cap="Note the hot pink microbe appearing as both a paint splatter and colonies. Antibiotics from top row to bottom: Ampicillin, Kanamycin, Streptomycin. (Image taken on October 29, 2024)"}
 knitr::include_graphics("~/Documents/github/antibiotic_resistance/Data/Images/2024_10_29/IMG_2394.jpeg")
-```
-
-```{r}
-panel <- plot_grid(
-  ggdraw() + draw_image("~/Documents/github/antibiotic_resistance/Data/Images/2024_10_28/IMG_2377.jpeg"),
-  ggdraw() + draw_image("~/Documents/github/antibiotic_resistance/Data/Images/2024_10_29/IMG_2394.jpeg"),
-  ncol = 2,
-  labels = c("A", "B")
-)
-panel
 ```
 
 
