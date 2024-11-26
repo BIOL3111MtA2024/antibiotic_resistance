@@ -144,6 +144,10 @@ flow_antibiotic_relative %>%
 
 
 #Results, Ruby
+Attempting to pull in IMG_2381.jpeg from 2024_10_28 folder
+```{r}
+knitr::include_graphics("~/Documents/github/antibiotic_resistance/Data/Images/2024_10_28/IMG_2394.jpeg")
+```
 NOTE: path to image is needed, just image name won't open image.
 
 AMPICILLIN TRENDS!
@@ -152,42 +156,12 @@ Semi opaque cream colour lawn in Ampicillin Out 2 (c), In 2 (a, b), In 1 (a, b, 
 
 October 28, 2024: Opaque cream/mustard lawn seen in Ampicillin In 1 (a, b, c), Out 3 (a, b, c), Out 1 (a, b, c).
 Semi opaque cream colour lawn in Ampicillin Out 2 (a, b, c), In 2 (a, b).
-Darker cream to rust graident (opaque) seen in In 3 (a, b, c). See IMG_2381.
-```{r}
-knitr::include_graphics("~/Documents/github/antibiotic_resistance/Data/Images/2024_10_28/IMG_2381.jpeg")
-
-```
-
+Darker cream to orange graident (opaque) seen in In 3 (a, b, c).
 
 October 29, 2024: Opaque mustard lawn seen in Out 2 (a, b), Out 1 (a, b, c), In 1 (a, b, c).
 Opaque cream lawn seen in Out 3 (a, b, c), In 2 (a, b).
 Semi opaque cream colour lawn in Ampicillin Out 2 (c).
-Darker cream to rust graident (opaque) seen in In 3 (a, b, c). See IMG_2397.
-```{r}
-knitr::include_graphics("~/Documents/github/antibiotic_resistance/Data/Images/2024_10_29/IMG_2397.jpeg")
-```
-
-
-HOT PINK MICROBE
-October 25, 2024: not seen
-
-October 28, 2024: See in Kanamycin Out 3 (a, b), Streptomycin Out 3 (a, b, c). Not quite a lawn, not clear colonies, looks like paint splatter. See IMG_2377.
-```{r}
-knitr::include_graphics("~/Documents/github/antibiotic_resistance/Data/Images/2024_10_28/IMG_2377.jpeg")
-```
-
-
-October 29, 2024: See in Kanamycin Out 3 (b, c), Streptomycin Out 3 (a, b, c). Colonies seen on Out 3 (c). See IMG_2394.
-```{r}
-knitr::include_graphics("~/Documents/github/antibiotic_resistance/Data/Images/2024_10_29/IMG_2394.jpeg")
-```
-#Discussion, Ruby
-AMPICILLIN TREND
-Unlike the other antibiotics, very little diversity is seen in Ampicillin, no matter the location of the water sample.
-The cream/yellow microbes may have already been resistant to Ampicillin, allowing them to outcomplete other microbes in the water sample, or there may have been less resistance of the other microbes to Ampicillin, allowing the cream/yellow microbes to propagate without competition. The darkening of colour of the cream/rust gradient over time looks to be the microbe drying out, since it doesn't further move along the antibiotic gradient after October 28.
-
-PINK MICROBE
-
+Darker cream to orange graident (opaque) seen in In 3 (a, b, c).
 
 #Results and Discussion, Avery
 
@@ -240,6 +214,13 @@ knitr::include_graphics("~/Documents/github/antibiotic_resistance/Data/Images/20
 In this image, the second and third streptomycin replicates (bottom row, middle and far right) also show fungi-fungi inhibition. There are similar zones of inhibition forming between different fungi growing on these plates. In the second streptomycin replicate, you can see the beige and white fungi will not extend and grow near each other (this image was from the last day of data collection so any extension that could have happened would have at this point), and in the third replicate a similar event can be seen with the beige fungus and the white fungi with green centres. 
 
 Why does fungi-fungi inhibition occur?
+
+Merging changes because of multiple working on project at once (version was behind)
+
+```{r}
+
+```
+
 
 # Bibliography
 
