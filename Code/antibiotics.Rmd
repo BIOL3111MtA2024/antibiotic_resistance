@@ -144,10 +144,6 @@ flow_antibiotic_relative %>%
 
 
 #Results, Ruby
-Attempting to pull in IMG_2381.jpeg from 2024_10_28 folder
-```{r}
-knitr::include_graphics("~/Documents/github/antibiotic_resistance/Data/Images/2024_10_28/IMG_2394.jpeg")
-```
 NOTE: path to image is needed, just image name won't open image.
 
 AMPICILLIN TRENDS!
@@ -162,6 +158,21 @@ October 29, 2024: Opaque mustard lawn seen in Out 2 (a, b), Out 1 (a, b, c), In 
 Opaque cream lawn seen in Out 3 (a, b, c), In 2 (a, b).
 Semi opaque cream colour lawn in Ampicillin Out 2 (c).
 Darker cream to orange graident (opaque) seen in In 3 (a, b, c).
+
+HOT PINK MICROBE
+October 25, 2024: not seen
+
+October 28, 2024: See in Kanamycin Out 3 (a, b), Streptomycin Out 3 (a, b, c). Not quite a lawn, not clear colonies, looks like paint splatter. See IMG_2377.
+```{r}
+knitr::include_graphics("~/Documents/github/antibiotic_resistance/Data/Images/2024_10_28/IMG_2377.jpeg")
+```
+
+
+October 29, 2024: See in Kanamycin Out 3 (b, c), Streptomycin Out 3 (a, b, c). Colonies seen on Out 3 (c). See IMG_2394.
+```{r}
+knitr::include_graphics("~/Documents/github/antibiotic_resistance/Data/Images/2024_10_29/IMG_2394.jpeg")
+```
+
 
 #Results and Discussion, Avery
 
