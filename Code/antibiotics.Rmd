@@ -146,8 +146,10 @@ flow_antibiotic_relative %>%
 #Results, Ruby
 Attempting to pull in IMG_2381.jpeg from 2024_10_28 folder
 ```{r}
-knitr::include_graphics("IMG_2381.jpeg")
+knitr::include_graphics("~/Documents/github/antibiotic_resistance/Data/Images/2024_10_28/IMG_2394.jpeg")
 ```
+NOTE: path to image is needed, just image name won't open image.
+
 October 25, 2024: Opaque cream colour lawn is seen in Ampicillin Out 2 (a and b), Out 3 (a, b, c), Out 1 (a, b, c). Semi opaque cream colour lawn in Ampicillin Out 2 (c), In 2 (a, b), In 1 (a, b, c), In 3 (a, b, c).
 
 #Results and Discussion, Avery
