@@ -165,35 +165,55 @@ Darker cream to orange graident (opaque) seen in In 3 (a, b, c).
 
 #Results and Discussion, Avery
 
-#Analyzing the fungi growing on the plates qualitatively
+Analyzing the fungi growing on the plates qualitatively
 
-#Background Research:
+Background Research:
 
-#Fungi are naturally resistant to antibiotics that kill commensal bacteria (which are those naturally occuring in/on the body), and therefore when antibiotics are used there is an increased likelihood of fungal infections (Jiang et al., 2017). With less bacterial growth, there would be more resources available to the fungi. The antibiotics that we tested (ampicillin, kanamycin, streptomycin) all kill commensal bacteria. This would imply that the more bacteria growing on a plate, the less fungal growth would be observed. 
+Fungi are naturally resistant to antibiotics that kill commensal bacteria (which are those naturally occuring in/on the body), and therefore when antibiotics are used there is an increased likelihood of fungal infections (Jiang et al., 2017). With less bacterial growth, there would be more resources available to the fungi. The antibiotics that we tested (ampicillin, kanamycin, streptomycin) all kill commensal bacteria. This would imply that the more bacteria growing on a plate, the less fungal growth would be observed. 
 
-#In our experiment, a lot of fungal growth was observed. This could be from contamination during innoculation, but could also be from the presence of spores in the water samples. 
+In our experiment, a lot of fungal growth was observed. This could be from contamination during innoculation, but could also be from the presence of spores in the water samples. 
 
-#With this arises the question of whether bacterial or fungal infections are more harmful to ones health, and this really depends on the type of bacteria and fungus present. In a study by Khan et. al. (2024), there overall was higher mortality observed in ICU patients that developed fungal infections than those with bacterial infections. Again, these outcomes do vary greatly with the type of bacteria or fungus because some are more dangerous than others. We were unable to open these plates and identify the bacteria and fungi present because of the potential risk of them being harmful, so in this case we cannot say for sure whether or not the fungi and bacteria were dangerous. It is important to consider that when in contact with water like the samples from Waterfowl Park, Sackville NB, there is potential for both bacterial and fungal exposure. 
+With this arises the question of whether bacterial or fungal infections are more harmful to ones health, and this really depends on the type of bacteria and fungus present. In a study by Khan et. al. (2024), there overall was higher mortality observed in ICU patients that developed fungal infections than those with bacterial infections. Again, these outcomes do vary greatly with the type of bacteria or fungus because some are more dangerous than others. We were unable to open these plates and identify the bacteria and fungi present because of the potential risk of them being harmful, so in this case we cannot say for sure whether or not the fungi and bacteria were dangerous. It is important to consider that when in contact with water like the samples from Waterfowl Park, Sackville NB, there is potential for both bacterial and fungal exposure. 
 
-#For ampicillin in particular, there are a lot of commensal bacteria that have built up resistance to the antibiotic due to its widespread use in medicine and agriculture (Gjonbalaj et. al., 2020). These bacteria have even been found to degrade ampicillin (Gjonbalaj et. al., 2020), and therefore theoretically this should lead to less fungal growth because there would be less antibiotic present and more commensal bacteria competing for the resources available in the plates. 
+For ampicillin in particular, there are a lot of commensal bacteria that have built up resistance to the antibiotic due to its widespread use in medicine and agriculture (Gjonbalaj et. al., 2020). These bacteria have even been found to degrade ampicillin (Gjonbalaj et. al., 2020), and therefore theoretically this should lead to less fungal growth because there would be less antibiotic present and more commensal bacteria competing for the resources available in the plates. 
 
-#Taking a closer look at In3:
+Taking a closer look at In3:
 
 ```{r}
 knitr::include_graphics("~/Documents/github/antibiotic_resistance/Data/Images/2024_10_28/IMG_2381.jpeg")
 ```
 
-#As can be seen in this image, all of the ampicillin plates exhibit more bacterial growth than the other antibiotic plates.There are also no fungi visible in the ampicillin plates, and there are fungi present in the kanamycin and streptomycin plates. 
+As can be seen in this image, all of the ampicillin plates exhibit more bacterial growth than the other antibiotic plates.There are also no fungi visible in the ampicillin plates, and there are fungi present in the kanamycin and streptomycin plates. 
 
-#Taking a closer look at Out3:
+Taking a closer look at Out3:
 
 ```{r}
 knitr::include_graphics("~/Documents/github/antibiotic_resistance/Data/Images/2024_10_28/IMG_2394.jpeg")
 ```
 
-#A similar trend is observed in this image, in all of the ampicillin plates there are lawns of bacterial growth, and no fungi observed. In the kanamycin and streptomycin plates where less bacterial growth is observed, there is fungal growth in every plate. 
+A similar trend is observed in this image, in all of the ampicillin plates there are lawns of bacterial growth, and no fungi observed. In the kanamycin and streptomycin plates where less bacterial growth is observed, there is fungal growth in every plate. 
 
-#These results align with observations made by Jiang et al. (2017), showing that with increased bacterial growth there is less fungal growth. And, with antibiotics preventing bacterial growth there is more likelihood of fungal growth because fungi have natural antibiotic resistance and there is less competition for resources with bacteria if bacterial growth is lower. 
+These results align with observations made by Jiang et al. (2017), showing that with increased bacterial growth there is less fungal growth. And, with antibiotics preventing bacterial growth there is more likelihood of fungal growth because fungi have natural antibiotic resistance and there is less competition for resources with bacteria if bacterial growth is lower. 
+
+Fungi-Fungi Inhibition:
+
+In our plates, there are some instances of fungi inhibiting other fungal growth, creating zones of inhibition.
+
+For example:
+
+```{r}
+knitr::include_graphics("~/Documents/github/antibiotic_resistance/Data/Images/2024_10_28/IMG_2375.jpeg")
+```
+
+In this image, you can see in the third streptomycin replicate (bottom right) that there is inibition of one fungi on the growth of another. The fluffy white fungus has grown around the circular, more beige fungus, leaving what can be described as a zone of inhibition between the two where there is no growth (edges of the two fungi do not extend and meet). 
+
+```{r}
+knitr::include_graphics("~/Documents/github/antibiotic_resistance/Data/Images/2024_10_29/IMG_2400.jpeg")
+```
+
+In this image, the second and third streptomycin replicates (bottom row, middle and far right) also show fungi-fungi inhibition. There are similar zones of inhibition forming between different fungi growing on these plates. In the second streptomycin replicate, you can see the beige and white fungi will not extend and grow near each other (this image was from the last day of data collection so any extension that could have happened would have at this point), and in the third replicate a similar event can be seen with the beige fungus and the white fungi with green centres. 
+
+Why does fungi-fungi inhibition occur?
 
 # Bibliography
 
