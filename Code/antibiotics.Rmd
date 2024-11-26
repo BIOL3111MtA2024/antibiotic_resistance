@@ -114,7 +114,7 @@ DataMeta <- left_join(x  = DataSheet, y = MetaData, by = "PlateID")
 ## Load a map of Tantramar from GoogleMaps 
 ## https://www.littlemissdata.com/blog/maps  
 
-register_google(key = "AIzaSyCJh3QpO7SbxKsJzjXo0qpAnJfVGJ_JPmg")
+register_google(key = "")
 
 # create a map covering the areas we sampled
 MaxLat <- max(MetaData$Lat, na.rm = TRUE)
