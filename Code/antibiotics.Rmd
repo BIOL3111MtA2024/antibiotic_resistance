@@ -253,7 +253,7 @@ Taking a closer look at Out3:
 knitr::include_graphics("~/Documents/github/antibiotic_resistance/Data/Images/2024_10_28/IMG_2394.jpeg")
 ```
 
-A similar trend is observed in this image, in all of the ampicillin plates there are lawns of bacterial growth, and no fungi observed. In the kanamycin and streptomycin plates where less bacterial growth is observed, there is fungal growth in every plate. 
+A similar trend is observed in this image, all of the ampicillin plates contain lawns of bacterial growth, and no fungi observed. In the kanamycin and streptomycin plates where less bacterial growth is observed, there is fungal growth in every plate. 
 
 These results align with observations made by Jiang et al. (2017), showing that with increased bacterial growth there is less fungal growth. And, with antibiotics preventing bacterial growth there is more likelihood of fungal growth because fungi have natural antibiotic resistance and there is less competition for resources with bacteria if bacterial growth is lower. 
 
