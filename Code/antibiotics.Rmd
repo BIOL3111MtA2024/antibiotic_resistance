@@ -145,7 +145,7 @@ CentreLat = mean(MetaData$Lat, na.rm = TRUE)
 CentreLon = mean(MetaData$Lon, na.rm = TRUE)
 
 SackvilleMap <- get_googlemap(center = c(lon = CentreLon, lat = CentreLat),
-                    zoom = 13,
+                    zoom = 16,
                     scale = 2,
                     maptype ='satellite',
                     color = 'color')
@@ -153,9 +153,15 @@ SackvilleMap <- get_googlemap(center = c(lon = CentreLon, lat = CentreLat),
 ggmap(SackvilleMap)
 
 ```
+```{r overlap sampling locations}
+ggmap(SackvilleMap) +
+ geom_point(data = MetaData, aes(x = Lon, y = Lat, colour = InOut), size = 3)  +
+  scale_colour_manual(values = c("In" = "darkslategray3", "Out" = "#e0115f"), na.translate = FALSE) +
+  theme(legend.position = "bottom") +
+labs(title = "Sampling Locations in Sackville Waterfowl Park",
+              caption = "October, 2024")
 ```
-## Overlay sampling locations
-
+Figure 
 
 1 mL of each sample was cultured on three antibiotic gradient plates with the tryptic soy agar and antibiotic (streptomycin, ampicillin, kanamycin) gradient ranging from 0-10 mg/mL. The incubated plates, inoculated on October 23, were left at room temperature and images were taken on October 25, October 28, and October 29.
 
