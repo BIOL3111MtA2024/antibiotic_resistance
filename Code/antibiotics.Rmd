@@ -121,7 +121,6 @@ DataSheet <- googlesheets4::read_sheet("https://docs.google.com/spreadsheets/d/1
 DataMeta <- left_join(x  = DataSheet, y = MetaData, by = "PlateID")
 ```
 ## In-Lab Work 
-We adapted protocols from Szybalski and Bryson (1952) and Lui *et al.* (2011) for an antibiotic gradient agar plates.
 3 samples from inflows and 3 samples from outflows of the water fowl park water body were collected. 
 
 ```{r generate map}
@@ -157,7 +156,27 @@ labs(title = "Sampling Locations in Sackville Waterfowl Park",
               caption = "October, 2024")
 ```
  
-1 mL of each sample was cultured on three antibiotic gradient plates with the tryptic soy agar and antibiotic (streptomycin, ampicillin, kanamycin) gradient ranging from 0-10 mg/mL. The incubated plates, inoculated on October 23, were left at room temperature and images were taken on October 25, October 28, and October 29.
+Protocols from Szybalski and Bryson (1952) and Lui *et al.* (2011) were adapted to mkae antibiotic gradient agar plates. 
+
+Antibiotics were water soluble, tryptic soy agar was divided into 3 for the antibiotic mixtures before being autoclaved, to ensure no contamination.
+
+Ampicillin:
+5.02 g Ampicillin powder/500 mL TSA = 10.04 mg/mL
+
+Due to lack of stock antibiotic powder, Kanamycin was made to the following specifications:
+4.67 g/500 mL = 9.34 mg/mL
+
+Streptomycin:
+5 g/500 mL = 10 mg/mL
+
+Each 100 mm plate had 15 mL of the antibiotic agar added, then was tiled to an angle kept consistent using the edge of a scoopula. When cool and solidified, 15 mL of the tryptic soy agar was added to the diagonal antibiotic layer
+
+1 mL of each sample was cultured on three antibiotic gradient plates with the tryptic soy agar and antibiotic (streptomycin, ampicillin, kanamycin) gradient ranging from 0-10 mg/mL. 
+
+
+
+
+The incubated plates, inoculated on October 23, were left at room temperature and images were taken on October 25, October 28, and October 29.
 
 Ideally, the antibiotic gradient plates serve as their own control since at one end, the concentration of the antibiotic being zero (Weinberg, 1959). *E. coli* was used as a control.
 
