@@ -152,7 +152,7 @@ Semi opaque cream colour lawn in Ampicillin Out 2 (c), In 2 (a, b), In 1 (a, b, 
 
 October 28, 2024: Opaque cream/mustard lawn seen in Ampicillin In 1 (a, b, c), Out 3 (a, b, c), Out 1 (a, b, c).
 Semi opaque cream colour lawn in Ampicillin Out 2 (a, b, c), In 2 (a, b).
-Darker cream to orange graident (opaque) seen in In 3 (a, b, c). See IMG_2381.
+Darker cream to rust graident (opaque) seen in In 3 (a, b, c). See IMG_2381.
 ```{r}
 knitr::include_graphics("~/Documents/github/antibiotic_resistance/Data/Images/2024_10_28/IMG_2381.jpeg")
 
@@ -162,7 +162,7 @@ knitr::include_graphics("~/Documents/github/antibiotic_resistance/Data/Images/20
 October 29, 2024: Opaque mustard lawn seen in Out 2 (a, b), Out 1 (a, b, c), In 1 (a, b, c).
 Opaque cream lawn seen in Out 3 (a, b, c), In 2 (a, b).
 Semi opaque cream colour lawn in Ampicillin Out 2 (c).
-Darker cream to orange graident (opaque) seen in In 3 (a, b, c). See IMG_2397.
+Darker cream to rust graident (opaque) seen in In 3 (a, b, c). See IMG_2397.
 ```{r}
 knitr::include_graphics("~/Documents/github/antibiotic_resistance/Data/Images/2024_10_29/IMG_2397.jpeg")
 ```
@@ -181,6 +181,12 @@ October 29, 2024: See in Kanamycin Out 3 (b, c), Streptomycin Out 3 (a, b, c). C
 ```{r}
 knitr::include_graphics("~/Documents/github/antibiotic_resistance/Data/Images/2024_10_29/IMG_2394.jpeg")
 ```
+#Discussion, Ruby
+AMPICILLIN TREND
+Unlike the other antibiotics, very little diversity is seen in Ampicillin, no matter the location of the water sample.
+The cream/yellow microbes may have already been resistant to Ampicillin, allowing them to outcomplete other microbes in the water sample, or there may have been less resistance of the other microbes to Ampicillin, allowing the cream/yellow microbes to propagate without competition. The darkening of colour of the cream/rust gradient over time looks to be the microbe drying out, since it doesn't further move along the antibiotic gradient after October 28.
+
+PINK MICROBE
 
 
 #Results and Discussion, Avery
