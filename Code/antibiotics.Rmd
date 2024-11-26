@@ -72,6 +72,7 @@ library(googlesheets4) #access to GoogleSheets
 ##library(lubridate) #tidyverse handling dates & times
 library(knitr)
 library(ggmap) #tools for using maps from GoogleEarth & GoogleMaps
+library(cowplot) #ruby using for panel figures
 ```
 
 ## InLine Citations of software packages added through the 'citr' option under 'Addins'.  
@@ -216,6 +217,18 @@ October 29, 2024: See in Kanamycin Out 3 (b, c), Streptomycin Out 3 (a, b, c). C
 ```{r IMG_2394, fig.cap="Note the hot pink microbe appearing as both a paint splatter and colonies. Antibiotics from top row to bottom: Ampicillin, Kanamycin, Streptomycin. (Image taken on October 29, 2024)"}
 knitr::include_graphics("~/Documents/github/antibiotic_resistance/Data/Images/2024_10_29/IMG_2394.jpeg")
 ```
+
+```{r panel_figure, fig.cap=""Note the hot pink microbe appearing as both a paint splatter and colonies. Antibiotics from top row to bottom row: ampicillin, kanamycin, streptomycin."}
+
+library(cowplot)
+
+img1 <- knitr::include_graphics("~/Documents/github/antibiotic_resistance/Data/Images/2024_10_28/IMG_2377.jpeg")
+img2 <- knitr::include_graphics("~/Documents/github/antibiotic_resistance/Data/Images/2024_10_29/IMG_2394.jpeg")
+
+plot_grid(img1, img2, ncol = 2, labels = c("A", "B"))
+```
+
+
 # Discussion, Ruby
 ## Ampicillin Trends
 Unlike the other antibiotics, very little diversity is seen in Ampicillin, no matter the location of the water sample.
