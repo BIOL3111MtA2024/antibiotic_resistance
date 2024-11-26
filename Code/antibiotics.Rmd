@@ -117,7 +117,7 @@ DataSheet <- googlesheets4::read_sheet("https://docs.google.com/spreadsheets/d/1
   #mutate(ExpDate = lubridate::ymd(ExpDate))
 ```
 # Merged  DataSheet with MetaData by the value of PlateID
-```{r}
+```{r merging DataSheet with MetaData by the value of PlateID}
 DataMeta <- left_join(x  = DataSheet, y = MetaData, by = "PlateID")
 ```
 ## In-Lab Work 
@@ -184,11 +184,6 @@ flow_antibiotic_relative %>%
 
 
 # Results, Ruby
-Attempting to pull in IMG_2381.jpeg from 2024_10_28 folder
-```{r IMG_2394}
-knitr::include_graphics("~/Documents/github/antibiotic_resistance/Data/Images/2024_10_28/IMG_2394.jpeg")
-```
-NOTE: path to image is needed, just image name won't open image.
 
 ## Ampicillin Trends
 October 25, 2024: Opaque cream colour lawn is seen in Ampicillin Out 2 (a and b), Out 3 (a, b, c), Out 1 (a, b, c). 
