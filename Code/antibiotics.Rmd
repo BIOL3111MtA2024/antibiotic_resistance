@@ -133,7 +133,7 @@ SackvilleMap <- get_googlemap(center = c(lon = CentreLon, lat = CentreLat),
 ggmap(SackvilleMap)
 
 ```
-
+with removal of key, first code to call up the plain map has an error, but the map with overlay still working?
 ```{r overlap sampling locations}
 ggmap(SackvilleMap) +
  geom_point(data = MetaData, aes(x = Lon, y = Lat, colour = InOut), size = 3)  +
