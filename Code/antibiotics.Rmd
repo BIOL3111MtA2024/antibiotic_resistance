@@ -194,6 +194,7 @@ The cream/yellow microbes may have already been resistant to Ampicillin, allowin
 ## Pink Microbe
 
 
+
 # Results and Discussion, Avery
 
 Analyzing the fungi growing on the plates qualitatively
@@ -255,6 +256,15 @@ Merging changes because of multiple working on project at once (version was behi
 
 # Bibliography
 
-#Gjonbalaj, M., Keith, J.W., Do, M.H., Hohl, T.M., Pamer, E.G., Becattini, S., 2020. Antibiotic Degradation by Commensal Microbes Shields Pathogens. Infect Immun 88, e00012-20. https://doi.org/10.1128/IAI.00012-20
-#Jiang, T.T., Shao, T.-Y., Ang, W.X.G., Kinder, J/M., Turner, L.H., Pham, G., Whitt, J., Alenghat, T., Way, S.S., 2017. Commensal Fungi Recapitulate the Protective Benefits of Intestinal Bacteria. Cell Host & Microbe 22, 809-816.e4. https://doi.org/10.1016/j.chom.2017.10.013
-#Khan, S., Hong, H., Bass, S., Wang, Y., Wang, X.-F., Sims, O.T., Koval, C.E., Kapoor, A., Lindenmeyer, C.C., 2024. Comparison of fungal vs bacterial infections in the medical intensive liver unit: Cause or corollary for high mortality? World J Hepatol 16, 379–392. https://doi.org/10.4254/wjh.v16.i3.379
+Bondarczuk, K., Markowicz, A., Piotrowska-Seget, Z., 2016. The urgent need for risk assessment on the antibiotic resistance spread via sewage sludge land application. Environment International 87, 49–55. https://doi.org/10.1016/j.envint.2015.11.011
+
+Gjonbalaj, M., Keith, J.W., Do, M.H., Hohl, T.M., Pamer, E.G., Becattini, S., 2020. Antibiotic Degradation by Commensal Microbes Shields Pathogens. Infect Immun 88, e00012-20. https://doi.org/10.1128/IAI.00012-20
+
+Jiang, T.T., Shao, T.-Y., Ang, W.X.G., Kinder, J/M., Turner, L.H., Pham, G., Whitt, J., Alenghat, T., Way, S.S., 2017. Commensal Fungi Recapitulate the Protective Benefits of Intestinal Bacteria. Cell Host & Microbe 22, 809-816.e4. https://doi.org/10.1016/j.chom.2017.10.013
+
+Khan, S., Hong, H., Bass, S., Wang, Y., Wang, X.-F., Sims, O.T., Koval, C.E., Kapoor, A., Lindenmeyer, C.C., 2024. Comparison of fungal vs bacterial infections in the medical intensive liver unit: Cause or corollary for high mortality? World J Hepatol 16, 379–392. https://doi.org/10.4254/wjh.v16.i3.379
+
+Liu, Y., Li, J., Du, J., Hu, M., Bai, H., Qi, J., Gao, C., Wei, T., Su, H., Jin, J., Gao, P., 2011. Accurate assessment of antibiotic susceptibility and screening resistant strains of a bacterial population by linear gradient plate. Sci. China Life Sci. 54, 953–960. https://doi.org/10.1007/s11427-011-4230-6
+
+Weinberg, E.D., 1959. Gradient Agar Plates.
+
