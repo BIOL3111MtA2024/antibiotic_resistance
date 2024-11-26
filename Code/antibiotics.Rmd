@@ -165,6 +165,7 @@ The plates, inoculated on October 23, were left at room temperature and images w
 
 Ideally, the antibiotic gradient plates serve as their own control since at one end the concentration of the antibiotic is zero (Weinberg, 1959). Lab strain *E. coli* (strain info pending... emailed Liza) was used as a control.
 
+
 # Who ever did this section, please make an actually subheading.
 ```{r}
 # Relative abundance for FlowType and Antibiotic
@@ -229,7 +230,7 @@ Unlike the other antibiotics, very little diversity is seen in Ampicillin, no ma
 The cream/yellow microbes may have already been resistant to Ampicillin, allowing them to outcomplete other microbes in the water sample, or there may have been less resistance of the other microbes to Ampicillin, allowing the cream/yellow microbes to propagate without competition. The darkening of colour of the cream/rust gradient over time looks to be the microbe drying out, since it doesn't further move along the antibiotic gradient after October 28.
 
 ## Pink Microbe
-
+ruby note to self: yes this is blank you need to finish this, no nothing was deleted, you didnt write anything
 
 
 # Results and Discussion, Avery
@@ -283,9 +284,6 @@ knitr::include_graphics("~/Documents/github/antibiotic_resistance/Data/Images/20
 In this image, the second and third streptomycin replicates (bottom row, middle and far right) also show fungi-fungi inhibition. There are similar zones of inhibition forming between different fungi growing on these plates. In the second streptomycin replicate, you can see the beige and white fungi will not extend and grow near each other (this image was from the last day of data collection so any extension that could have happened would have at this point), and in the third replicate a similar event can be seen with the beige fungus and the white fungi with green centres. 
 
 Why does fungi-fungi inhibition occur?
-
-Merging changes because of multiple working on project at once (version was behind)
-
 
 
 # Bibliography
