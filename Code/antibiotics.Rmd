@@ -246,7 +246,7 @@ For ampicillin in particular, there are a lot of commensal bacteria that have bu
 
 Taking a closer look at In3:
 
-```{r}
+```{r Calling up Image for In3, October 28, 2024}
 knitr::include_graphics("~/Documents/github/antibiotic_resistance/Data/Images/2024_10_28/IMG_2381.jpeg")
 ```
 
@@ -254,7 +254,7 @@ As can be seen in this image, all of the ampicillin plates exhibit more bacteria
 
 Taking a closer look at Out3:
 
-```{r}
+```{r Calling up Image for Out3, October 28, 2024}
 knitr::include_graphics("~/Documents/github/antibiotic_resistance/Data/Images/2024_10_28/IMG_2394.jpeg")
 ```
 
@@ -268,13 +268,13 @@ In our plates, there are some instances of fungi inhibiting other fungal growth,
 
 For example:
 
-```{r}
+```{r Calling up Image for In2, October 28, 2024}
 knitr::include_graphics("~/Documents/github/antibiotic_resistance/Data/Images/2024_10_28/IMG_2375.jpeg")
 ```
 
 In this image, you can see in the third streptomycin replicate (bottom right) that there is inibition of one fungi on the growth of another. The fluffy white fungus has grown around the circular, more beige fungus, leaving what can be described as a zone of inhibition between the two where there is no growth (edges of the two fungi do not extend and meet). 
 
-```{r}
+```{r Calling up Image for Out1, October 29, 2024}}
 knitr::include_graphics("~/Documents/github/antibiotic_resistance/Data/Images/2024_10_29/IMG_2400.jpeg")
 ```
 
@@ -284,9 +284,6 @@ Why does fungi-fungi inhibition occur?
 
 Merging changes because of multiple working on project at once (version was behind)
 
-```{r}
-
-```
 
 
 # Bibliography
