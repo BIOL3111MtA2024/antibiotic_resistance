@@ -54,11 +54,6 @@ Combined abundance: This will show a detailed breakdown of colony abundance for 
 Note, Kingsley is excluding the colonies in a  lawn becaause  a lawn contains infinity number of colonies
 
 # Materials & Methods, Ruby
-## In-Lab Work 
-We adapted protocols from Szybalski and Bryson (1952) and Lui *et al.* (2011) for an antibiotic gradient agar plates.
-3 samples from inflows and 3 samples from outflows of the water fowl park water body were collected. 1 mL of each sample was cultured on three antibiotic gradient plates with the tryptic soy agar and antibiotic (streptomycin, ampicillin, kanamycin) gradient ranging from 0-10 mg/mL. The incubated plates, inoculated on October 23, were left at room temperature and images were taken on October 25, October 28, and October 29.
-
-Ideally, the antibiotic gradient plates serve as their own control since at one end, the concentration of the antibiotic being zero (Weinberg, 1959). *E. coli* was used as a control.
 
 ## Set chunk options
 Formatted display of content from .md file on GitHub site.
@@ -75,6 +70,8 @@ library(googledrive) #access to GoogleDrive
 library(googlesheets4) #access to GoogleSheets
 ##library(data.table) #fast data handling;  complement to tidverse dplyr
 ##library(lubridate) #tidyverse handling dates & times
+library(knitr)
+library(ggmap) #tools for using maps from GoogleEarth & GoogleMaps
 ```
 
 ## InLine Citations of software packages added through the 'citr' option under 'Addins'.  
@@ -123,7 +120,46 @@ DataSheet <- googlesheets4::read_sheet("https://docs.google.com/spreadsheets/d/1
 ```{r}
 DataMeta <- left_join(x  = DataSheet, y = MetaData, by = "PlateID")
 ```
+## In-Lab Work 
+We adapted protocols from Szybalski and Bryson (1952) and Lui *et al.* (2011) for an antibiotic gradient agar plates.
+3 samples from inflows and 3 samples from outflows of the water fowl park water body were collected. 
 
+## Load a map of Tantramar from GoogleMaps 
+## https://www.littlemissdata.com/blog/maps  
+```{r generate map}
+#library(ggmap)
+# Visit - https://console.cloud.google.com and sign up for a google cloud platform trial.
+#Create a project.  In the top nav, you can either select an existing project or create a new one. 
+
+register_google(key = "AIzaSyCJh3QpO7SbxKsJzjXo0qpAnJfVGJ_JPmg")
+
+#gs4_deauth()
+
+
+# create a map covering the areas we sampled
+MaxLat <- max(MetaData$Lat, na.rm = TRUE)
+MinLat <- min(MetaData$Lat, na.rm = TRUE)
+MaxLon <- max(MetaData$Lon, na.rm = TRUE)
+MinLon <- min(MetaData$Lon, na.rm = TRUE)
+CentreLat = mean(MetaData$Lat, na.rm = TRUE)
+CentreLon = mean(MetaData$Lon, na.rm = TRUE)
+
+SackvilleMap <- get_googlemap(center = c(lon = CentreLon, lat = CentreLat),
+                    zoom = 13,
+                    scale = 2,
+                    maptype ='satellite',
+                    color = 'color')
+
+ggmap(SackvilleMap)
+
+```
+```
+## Overlay sampling locations
+
+
+1 mL of each sample was cultured on three antibiotic gradient plates with the tryptic soy agar and antibiotic (streptomycin, ampicillin, kanamycin) gradient ranging from 0-10 mg/mL. The incubated plates, inoculated on October 23, were left at room temperature and images were taken on October 25, October 28, and October 29.
+
+Ideally, the antibiotic gradient plates serve as their own control since at one end, the concentration of the antibiotic being zero (Weinberg, 1959). *E. coli* was used as a control.
 
 
 ```{r}
