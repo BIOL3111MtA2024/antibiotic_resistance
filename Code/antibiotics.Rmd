@@ -166,7 +166,7 @@ The plates, inoculated on October 23, were left at room temperature and images w
 Ideally, the antibiotic gradient plates serve as their own control since at one end the concentration of the antibiotic is zero (Weinberg, 1959). Lab strain *E. coli* (strain info pending... emailed Liza) was used as a control.
 
 
-# Who ever did this section, please make an actually subheading.
+# Who ever did this section, please make an actual subheading.
 ```{r}
 # Relative abundance for FlowType and Antibiotic
  flow_antibiotic_relative <- DataMeta %>%
