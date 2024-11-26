@@ -124,17 +124,11 @@ DataMeta <- left_join(x  = DataSheet, y = MetaData, by = "PlateID")
 We adapted protocols from Szybalski and Bryson (1952) and Lui *et al.* (2011) for an antibiotic gradient agar plates.
 3 samples from inflows and 3 samples from outflows of the water fowl park water body were collected. 
 
+```{r generate map}
 ## Load a map of Tantramar from GoogleMaps 
 ## https://www.littlemissdata.com/blog/maps  
-```{r generate map}
-#library(ggmap)
-# Visit - https://console.cloud.google.com and sign up for a google cloud platform trial.
-#Create a project.  In the top nav, you can either select an existing project or create a new one. 
 
 register_google(key = "AIzaSyCJh3QpO7SbxKsJzjXo0qpAnJfVGJ_JPmg")
-
-#gs4_deauth()
-
 
 # create a map covering the areas we sampled
 MaxLat <- max(MetaData$Lat, na.rm = TRUE)
@@ -161,8 +155,7 @@ ggmap(SackvilleMap) +
 labs(title = "Sampling Locations in Sackville Waterfowl Park",
               caption = "October, 2024")
 ```
-Figure 
-
+ 
 1 mL of each sample was cultured on three antibiotic gradient plates with the tryptic soy agar and antibiotic (streptomycin, ampicillin, kanamycin) gradient ranging from 0-10 mg/mL. The incubated plates, inoculated on October 23, were left at room temperature and images were taken on October 25, October 28, and October 29.
 
 Ideally, the antibiotic gradient plates serve as their own control since at one end, the concentration of the antibiotic being zero (Weinberg, 1959). *E. coli* was used as a control.
