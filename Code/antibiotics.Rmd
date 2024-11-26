@@ -161,24 +161,22 @@ Protocols from Szybalski and Bryson (1952) and Lui *et al.* (2011) were adapted 
 Antibiotics were water soluble, tryptic soy agar was divided into 3 for the antibiotic mixtures before being autoclaved, to ensure no contamination.
 
 Ampicillin:
-5.02 g Ampicillin powder/500 mL TSA = 10.04 mg/mL
+5.02 g ampicillin powder/500 mL TSA = 10.04 mg/mL
 
 Due to lack of stock antibiotic powder, Kanamycin was made to the following specifications:
-4.67 g/500 mL = 9.34 mg/mL
+4.67 g kanamycin powder/500 mL TSA = 9.34 mg/mL
 
 Streptomycin:
-5 g/500 mL = 10 mg/mL
+5 g streptomycin powder/500 mL = 10 mg/mL
 
-Each 100 mm plate had 15 mL of the antibiotic agar added, then was tiled to an angle kept consistent using the edge of a scoopula. When cool and solidified, 15 mL of the tryptic soy agar was added to the diagonal antibiotic layer
+Each 100 mm plate had 15 mL of the antibiotic agar added, then was tiled to an angle kept consistent using the edge of a scoopula. When cool and solidified, 15 mL of the tryptic soy agar was added to the diagonal antibiotic layer. Graident plates were left to diffuse for 24 hours at room temprature.
 
-1 mL of each sample was cultured on three antibiotic gradient plates with the tryptic soy agar and antibiotic (streptomycin, ampicillin, kanamycin) gradient ranging from 0-10 mg/mL. 
-
-
+1 mL of each sample was cultured on three antibiotic gradient plates with the tryptic soy agar and antibiotic (streptomycin, ampicillin, kanamycin) gradient ranging from 0 to ~10 mg/mL. 
 
 
-The incubated plates, inoculated on October 23, were left at room temperature and images were taken on October 25, October 28, and October 29.
+The plates, inoculated on October 23, were left at room temperature and images were taken on October 25, October 28, and October 29.
 
-Ideally, the antibiotic gradient plates serve as their own control since at one end, the concentration of the antibiotic being zero (Weinberg, 1959). *E. coli* was used as a control.
+Ideally, the antibiotic gradient plates serve as their own control since at one end the concentration of the antibiotic is zero (Weinberg, 1959). Lab strain *E. coli* (strain info pending... emailed Liza) was used as a control.
 
 # Who ever did this section, please make an actually subheading.
 ```{r}
