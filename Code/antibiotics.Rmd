@@ -5,6 +5,7 @@ author:
 - Douglas Campbell^1^*
 - Carlie Barnhill^1^*
 - Ruby Muzzatti^1^*
+- Avery MacKinnon^1^*
 output:
   bookdown::html_document2:
     code_folding: show
@@ -149,6 +150,40 @@ knitr::include_graphics("IMG_2381.jpeg")
 ```
 October 25, 2024: Opaque cream colour lawn is seen in Ampicillin Out 2 (a and b), Out 3 (a, b, c), Out 1 (a, b, c). Semi opaque cream colour lawn in Ampicillin Out 2 (c), In 2 (a, b), In 1 (a, b, c), In 3 (a, b, c).
 
-\newpage
+#Results and Discussion, Avery
+
+#Analyzing the fungi growing on the plates qualitatively
+
+#Background Research:
+
+#Fungi are naturally resistant to antibiotics that kill commensal bacteria (which are those naturally occuring in/on the body), and therefore when antibiotics are used there is an increased likelihood of fungal infections (Jiang et al., 2017). With less bacterial growth, there would be more resources available to the fungi. The antibiotics that we tested (ampicillin, kanamycin, streptomycin) all kill commensal bacteria. This would imply that the more bacteria growing on a plate, the less fungal growth would be observed. 
+
+#In our experiment, a lot of fungal growth was observed. This could be from contamination during innoculation, but could also be from the presence of spores in the water samples. 
+
+#With this arises the question of whether bacterial or fungal infections are more harmful to ones health, and this really depends on the type of bacteria and fungus present. In a study by Khan et. al. (2024), there overall was higher mortality observed in ICU patients that developed fungal infections than those with bacterial infections. Again, these outcomes do vary greatly with the type of bacteria or fungus because some are more dangerous than others. We were unable to open these plates and identify the bacteria and fungi present because of the potential risk of them being harmful, so in this case we cannot say for sure whether or not the fungi and bacteria were dangerous. It is important to consider that when in contact with water like the samples from Waterfowl Park, Sackville NB, there is potential for both bacterial and fungal exposure. 
+
+#For ampicillin in particular, there are a lot of commensal bacteria that have built up resistance to the antibiotic due to its widespread use in medicine and agriculture (Gjonbalaj et. al., 2020). These bacteria have even been found to degrade ampicillin (Gjonbalaj et. al., 2020), and therefore theoretically this should lead to less fungal growth because there would be less antibiotic present and more commensal bacteria competing for the resources available in the plates. 
+
+#Taking a closer look at In3:
+
+```{r}
+knitr::include_graphics("~/Documents/github/antibiotic_resistance/Data/Images/2024_10_28/IMG_2381.jpeg")
+```
+
+#As can be seen in this image, all of the ampicillin plates exhibit more bacterial growth than the other antibiotic plates.There are also no fungi visible in the ampicillin plates, and there are fungi present in the kanamycin and streptomycin plates. 
+
+#Taking a closer look at Out3:
+
+```{r}
+knitr::include_graphics("~/Documents/github/antibiotic_resistance/Data/Images/2024_10_28/IMG_2394.jpeg")
+```
+
+#A similar trend is observed in this image, in all of the ampicillin plates there are lawns of bacterial growth, and no fungi observed. In the kanamycin and streptomycin plates where less bacterial growth is observed, there is fungal growth in every plate. 
+
+#These results align with observations made by Jiang et al. (2017), showing that with increased bacterial growth there is less fungal growth. And, with antibiotics preventing bacterial growth there is more likelihood of fungal growth because fungi have natural antibiotic resistance and there is less competition for resources with bacteria if bacterial growth is lower. 
 
 # Bibliography
+
+#Gjonbalaj, M., Keith, J.W., Do, M.H., Hohl, T.M., Pamer, E.G., Becattini, S., 2020. Antibiotic Degradation by Commensal Microbes Shields Pathogens. Infect Immun 88, e00012-20. https://doi.org/10.1128/IAI.00012-20
+#Jiang, T.T., Shao, T.-Y., Ang, W.X.G., Kinder, J/M., Turner, L.H., Pham, G., Whitt, J., Alenghat, T., Way, S.S., 2017. Commensal Fungi Recapitulate the Protective Benefits of Intestinal Bacteria. Cell Host & Microbe 22, 809-816.e4. https://doi.org/10.1016/j.chom.2017.10.013
+#Khan, S., Hong, H., Bass, S., Wang, Y., Wang, X.-F., Sims, O.T., Koval, C.E., Kapoor, A., Lindenmeyer, C.C., 2024. Comparison of fungal vs bacterial infections in the medical intensive liver unit: Cause or corollary for high mortality? World J Hepatol 16, 379–392. https://doi.org/10.4254/wjh.v16.i3.379
