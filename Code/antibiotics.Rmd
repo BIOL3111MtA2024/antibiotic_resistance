@@ -5,6 +5,7 @@ author:
 - Douglas Campbell^1^*
 - Ruby Muzzatti^1^*
 - Avery MacKinnon^1^*
+- Kingsley Ayiah^1^*
 output:
   bookdown::html_document2:
     code_folding: show
@@ -39,19 +40,18 @@ DAC was supported by the Canada Research Chairs.
 File import functions read files into R objects, commonly data frames.
 I love github
 
-Things Kingsley will do
+# Overview of analysis, Kingsley
 
 Relative abundance of colonies by flow type (inflow vs. outflow).
-Relative abundance of colonies by antibiotics.
-Combined abundance of colonies by flow type and antibiotics (stacked or grouped).
+Abundance of colonies by flow type and antibiotics (grouped).
 Interpretation
 Inflow vs. Outflow: This will show whether the colony abundance is higher in the inflow or the outflow of your sample.
 
-Antibiotic Comparison: You will observe which antibiotic showed higher or lower bacterial counts, reflecting relative resistance or susceptibility.
-
-Combined abundance: This will show a detailed breakdown of colony abundance for each antibiotic within inflow and outflow categories.
+Relative abundance for flowtype and antibiotic: This will show a detailed breakdown of colony abundance for each antibiotic within the inflow and outflow.
 
 Note, Kingsley is excluding the colonies in a  lawn becaause  a lawn contains infinity number of colonies
+
+# Introduction, Avery
 
 # Materials & Methods, Ruby
 
@@ -102,7 +102,7 @@ DataSheet <- googlesheets4::read_sheet("https://docs.google.com/spreadsheets/d/1
   #mutate(ExpDate = lubridate::ymd(ExpDate))
 ```
 
-## Merged  DataSheet with MetaData by the value of PlateID
+## Merged  DataSheet with MetaData by the value of PlateID, 
 ```{r merging DataSheet with MetaData by the value of PlateID}
 DataMeta <- left_join(x  = DataSheet, y = MetaData, by = "PlateID")
 ```
@@ -165,10 +165,131 @@ The plates, inoculated on October 23, were left at room temperature and images w
 
 Ideally, the antibiotic gradient plates serve as their own control since at one end the concentration of the antibiotic is zero (Weinberg, 1959). Lab strain *Escherichia coli* K12 was used as a control.
 
-
-# Who ever did this section, please make an actual subheading.
+#Results and discussion, Samantha Hallett
+libraries needed to do code
 ```{r}
-# Relative abundance for FlowType and Antibiotic
+library(dplyr)
+library(ggplot2)
+```
+Effective concentration 
+```{r}
+avg_effective_conc <- DataMeta %>%
+  filter(Colony_Number > 0) %>% # Include rows where colonies are present
+  group_by(Antibiotic, ObservationDate) %>%
+  summarize(
+    Avg_Concentration = mean(AbxConcReached_mgmL, na.rm = TRUE)
+  )
+print(avg_effective_conc)
+```
+resistance threshold
+```{r}
+resistance_threshold <- DataMeta %>%
+  group_by(Antibiotic) %>%
+  filter(Colony_Number == 0) %>% # Only rows with no colonies
+  summarize(
+    Resistance_Threshold = min(AbxConcReached_mgmL, na.rm = TRUE)
+  )
+print(resistance_threshold)
+```
+comparison across antibiotics (to find the most effective antibiotic)
+```{r}
+comparison <- DataMeta %>%
+  group_by(Antibiotic) %>%
+  summarize(
+    Avg_ColonyCount = mean(Colony_Number, na.rm = TRUE), # Lower is better for effectiveness
+    Resistance_Threshold = min(AbxConcReached_mgmL[Colony_Number == 0], na.rm = TRUE)
+  ) %>%
+  arrange(Avg_ColonyCount)
+print(comparison)
+```
+growth trends
+```{r}
+growth_trends <- DataMeta %>%
+  group_by(Antibiotic, InOut) %>%
+  summarize(
+    Avg_ColonyCount = mean(Colony_Number, na.rm = TRUE),
+    Avg_Concentration = mean(AbxConcReached_mgmL, na.rm = TRUE)
+  )
+```
+visualize growth trends
+```{r}
+ggplot(DataMeta, aes(x = AbxConcReached_mgmL, y = Colony_Number, color = InOut)) +
+  geom_point() +
+  geom_smooth(method = "loess") +
+  facet_wrap(~ Antibiotic) +
+  labs(
+    title = "Growth Trends: Colony Count vs Antibiotic Concentration",
+    x = "Antibiotic Concentration",
+    y = "Colony Count"
+  ) +
+  theme_minimal()
+```
+Environmental impact 
+```{r}
+location_effectiveness <- DataMeta %>%
+  group_by(Location, Antibiotic) %>%
+  summarize(
+    Avg_ColonyCount = mean(Colony_Number, na.rm = TRUE)
+  )
+```
+visualize environmental impact
+```{r}
+ggplot(location_effectiveness, aes(x = Location, y = Avg_ColonyCount, fill = Antibiotic)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  labs(
+    title = "Environmental Impact on Antibiotic Effectiveness",
+    x = "Location",
+    y = "Average Colony Count"
+  ) +
+  theme_minimal()
+```
+law presence
+```{r}
+law_relationship <- DataMeta %>%
+  group_by(Antibiotic) %>%
+  summarize(
+    Correlation = cor(Colony_Number, AbxConcReached_mgmL, use = "complete.obs")
+  )
+
+print(law_relationship)
+
+```
+visualize law relationship
+```{r}
+ggplot(DataMeta, aes(x = AbxConcReached_mgmL, y = Colony_Number, color = Antibiotic)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  labs(
+    title = "Relationship Between Antibiotic Concentration and Colony Count",
+    x = "Antibiotic Concentration",
+    y = "Colony Count"
+  ) +
+  theme_minimal()
+
+```
+
+# Result, Kingsley 
+
+## Relative abundance of colonies by flow type (inflow vs. outflow)
+```{r}
+ flow_relative <- DataMeta %>%
+filter(!is.na(InOut))%>%
+  group_by(InOut)%>%
+    summarise(TotalCount = sum(Colony_Number, na.rm = TRUE)) %>%
+  ungroup()
+
+```
+  
+## Plot of flow type against relative count of colonies  
+```{r Flow_relative}
+flow_relative %>%
+  ggplot()+
+  geom_bar(aes(x = InOut, y = TotalCount, colour = InOut, fill = InOut ), stat = "identity")
+```
+
+## Analysis of Relative abundance of colonies for flow  type and antibiotics
+
+```{r Abundance of flowtype  and  antibiotics}
  flow_antibiotic_relative <- DataMeta %>%
 filter(!is.na(InOut))%>%
   group_by(Antibiotic, InOut)%>%
@@ -180,15 +301,14 @@ filter(!is.na(InOut))%>%
      #mutate(RelativeAbundance = (TotalCount / sum(TotalCount)) * 100)
 ```
 
-```{r}
+## Bar plot comparing relative abundance of colony for flowtype and antibitics
+```{r Figure showing bar plot of flowtype  and  antibiotics}
 flow_antibiotic_relative %>%
   ggplot()+
   geom_bar(aes(x = Antibiotic, y = TotalCount, colour = InOut, fill = InOut ), stat = "identity")
 ```
 
-
-
-
+#
 # Results, Ruby
 
 ## Ampicillin Trends
@@ -237,7 +357,7 @@ ruby note to self: yes this is blank you need to finish this, no nothing was del
 
 Analyzing the fungi growing on the plates qualitatively
 
-Background Research:
+##Background Research:
 
 Fungi are naturally resistant to antibiotics that kill commensal bacteria (which are those naturally occuring in/on the body), and therefore when antibiotics are used there is an increased likelihood of fungal infections (Jiang et al., 2017). With less bacterial growth, there would be more resources available to the fungi. The antibiotics that we tested (ampicillin, kanamycin, streptomycin) all kill commensal bacteria. This would imply that the more bacteria growing on a plate, the less fungal growth would be observed. 
 
@@ -247,7 +367,7 @@ With this arises the question of whether bacterial or fungal infections are more
 
 For ampicillin in particular, there are a lot of commensal bacteria that have built up resistance to the antibiotic due to its widespread use in medicine and agriculture (Gjonbalaj et. al., 2020). These bacteria have even been found to degrade ampicillin (Gjonbalaj et. al., 2020), and therefore theoretically this should lead to less fungal growth because there would be less antibiotic present and more commensal bacteria competing for the resources available in the plates. 
 
-Taking a closer look at In3:
+##Taking a closer look at In3:
 
 ```{r Calling up Image for In3, October 28, 2024}
 knitr::include_graphics("~/Documents/github/antibiotic_resistance/Data/Images/2024_10_28/IMG_2381.jpeg")
@@ -255,7 +375,7 @@ knitr::include_graphics("~/Documents/github/antibiotic_resistance/Data/Images/20
 
 As can be seen in this image, all of the ampicillin plates exhibit more bacterial growth than the other antibiotic plates.There are also no fungi visible in the ampicillin plates, and there are fungi present in the kanamycin and streptomycin plates. 
 
-Taking a closer look at Out3:
+##Taking a closer look at Out3:
 
 ```{r Calling up Image for Out3, October 28, 2024}
 knitr::include_graphics("~/Documents/github/antibiotic_resistance/Data/Images/2024_10_28/IMG_2394.jpeg")
@@ -265,11 +385,11 @@ A similar trend is observed in this image, all of the ampicillin plates contain 
 
 These results align with observations made by Jiang et al. (2017), showing that with increased bacterial growth there is less fungal growth. And, with antibiotics preventing bacterial growth there is more likelihood of fungal growth because fungi have natural antibiotic resistance and there is less competition for resources with bacteria if bacterial growth is lower. 
 
-Fungi-Fungi Inhibition:
+##Fungi-Fungi Inhibition:
 
 In our plates, there are some instances of fungi inhibiting other fungal growth, creating zones of inhibition.
 
-For example:
+For example, lets take a look at In2:
 
 ```{r Calling up Image for In2, October 28, 2024}
 knitr::include_graphics("~/Documents/github/antibiotic_resistance/Data/Images/2024_10_28/IMG_2375.jpeg")
@@ -285,6 +405,7 @@ In this image, the second and third streptomycin replicates (bottom row, middle 
 
 Why does fungi-fungi inhibition occur?
 
+##Fungal Growth and location
 
 # Bibliography
 
