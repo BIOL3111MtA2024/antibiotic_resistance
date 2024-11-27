@@ -53,7 +53,7 @@ Note, Kingsley is excluding the colonies in a  lawn becaause  a lawn contains in
 
 # Introduction, Avery
 
-# Materials & Methods, Ruby
+# Materials & Methods
 
 ## Set chunk options
 Formatted display of content from .md file on GitHub site.
@@ -107,7 +107,7 @@ DataSheet <- googlesheets4::read_sheet("https://docs.google.com/spreadsheets/d/1
 DataMeta <- left_join(x  = DataSheet, y = MetaData, by = "PlateID")
 ```
 
-## In-Lab Work 
+## In-Lab Work, Ruby
 3 samples from inflows and 3 samples from outflows of the water fowl park water body were collected. 
 
 ```{r generate map}
@@ -143,9 +143,9 @@ labs(title = "Sampling Locations in Sackville Waterfowl Park",
               caption = "October, 2024")
 ```
  
-Protocols from Szybalski and Bryson (1952) and Lui *et al.* (2011) were adapted to mkae antibiotic gradient agar plates. 
+Protocols from Szybalski and Bryson (1952) and Lui *et al.* (2011) were adapted to make antibiotic gradient agar plates. 
 
-Antibiotics were water soluble, tryptic soy agar was divided into 3 for the antibiotic mixtures before being autoclaved, to ensure no contamination.
+Antibiotics were water soluble, tryptic soy agar (TSA) was divided into 3 for the antibiotic mixtures before being sterilized in an autoclave, to ensure no contamination when splitting the TSA for the plain TSA and 3 antibiotic mixtures.
 
 Ampicillin:
 5.02 g ampicillin powder/500 mL TSA = 10.04 mg/mL
@@ -156,7 +156,7 @@ Due to lack of stock antibiotic powder, Kanamycin was made to the following spec
 Streptomycin:
 5 g streptomycin powder/500 mL = 10 mg/mL
 
-Each 100 mm plate had 15 mL of the antibiotic agar added, then was tiled to an angle kept consistent using the edge of a scoopula. When cool and solidified, 15 mL of the tryptic soy agar was added to the diagonal antibiotic layer. Graident plates were left to diffuse for 24 hours at room temprature.
+Each 100 mm plate had 15 mL of the antibiotic agar added, then was tiled to an angle kept consistent using the edge of a scoopula. When cool and solidified, 15 mL of the tryptic soy agar was added to the diagonal antibiotic layer. Gradient plates were left to diffuse for 24 hours at room temperature.
 
 1 mL of each sample was cultured on three antibiotic gradient plates with the tryptic soy agar and antibiotic (streptomycin, ampicillin, kanamycin) gradient ranging from 0 to ~10 mg/mL. 
 
