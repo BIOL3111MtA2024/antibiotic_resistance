@@ -369,7 +369,7 @@ These results align with observations made by Jiang et al. (2017), showing that 
 
 In our plates, there are some instances of fungi inhibiting other fungal growth, creating zones of inhibition.
 
-For example:
+For example, lets take a look at In2:
 
 ```{r Calling up Image for In2, October 28, 2024}
 knitr::include_graphics("~/Documents/github/antibiotic_resistance/Data/Images/2024_10_28/IMG_2375.jpeg")
