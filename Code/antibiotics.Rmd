@@ -39,7 +39,6 @@ DAC was supported by the Canada Research Chairs.
 
 # Overview
 File import functions read files into R objects, commonly data frames.
-I love github
 
 # Overview of analysis, Kingsley
 
