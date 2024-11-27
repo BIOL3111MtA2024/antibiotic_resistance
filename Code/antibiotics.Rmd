@@ -308,7 +308,7 @@ flow_antibiotic_relative %>%
   geom_bar(aes(x = Antibiotic, y = TotalCount, colour = InOut, fill = InOut ), stat = "identity")
 ```
 
-
+#
 # Results, Ruby
 
 ## Ampicillin Trends
