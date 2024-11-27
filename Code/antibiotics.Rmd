@@ -53,6 +53,8 @@ Combined abundance: This will show a detailed breakdown of colony abundance for 
 
 Note, Kingsley is excluding the colonies in a  lawn becaause  a lawn contains infinity number of colonies
 
+# Introduction, Avery
+
 # Materials & Methods, Ruby
 
 ## Set chunk options
@@ -237,7 +239,7 @@ ruby note to self: yes this is blank you need to finish this, no nothing was del
 
 Analyzing the fungi growing on the plates qualitatively
 
-Background Research:
+##Background Research:
 
 Fungi are naturally resistant to antibiotics that kill commensal bacteria (which are those naturally occuring in/on the body), and therefore when antibiotics are used there is an increased likelihood of fungal infections (Jiang et al., 2017). With less bacterial growth, there would be more resources available to the fungi. The antibiotics that we tested (ampicillin, kanamycin, streptomycin) all kill commensal bacteria. This would imply that the more bacteria growing on a plate, the less fungal growth would be observed. 
 
@@ -247,7 +249,7 @@ With this arises the question of whether bacterial or fungal infections are more
 
 For ampicillin in particular, there are a lot of commensal bacteria that have built up resistance to the antibiotic due to its widespread use in medicine and agriculture (Gjonbalaj et. al., 2020). These bacteria have even been found to degrade ampicillin (Gjonbalaj et. al., 2020), and therefore theoretically this should lead to less fungal growth because there would be less antibiotic present and more commensal bacteria competing for the resources available in the plates. 
 
-Taking a closer look at In3:
+##Taking a closer look at In3:
 
 ```{r Calling up Image for In3, October 28, 2024}
 knitr::include_graphics("~/Documents/github/antibiotic_resistance/Data/Images/2024_10_28/IMG_2381.jpeg")
@@ -255,7 +257,7 @@ knitr::include_graphics("~/Documents/github/antibiotic_resistance/Data/Images/20
 
 As can be seen in this image, all of the ampicillin plates exhibit more bacterial growth than the other antibiotic plates.There are also no fungi visible in the ampicillin plates, and there are fungi present in the kanamycin and streptomycin plates. 
 
-Taking a closer look at Out3:
+##Taking a closer look at Out3:
 
 ```{r Calling up Image for Out3, October 28, 2024}
 knitr::include_graphics("~/Documents/github/antibiotic_resistance/Data/Images/2024_10_28/IMG_2394.jpeg")
@@ -265,7 +267,7 @@ A similar trend is observed in this image, all of the ampicillin plates contain 
 
 These results align with observations made by Jiang et al. (2017), showing that with increased bacterial growth there is less fungal growth. And, with antibiotics preventing bacterial growth there is more likelihood of fungal growth because fungi have natural antibiotic resistance and there is less competition for resources with bacteria if bacterial growth is lower. 
 
-Fungi-Fungi Inhibition:
+##Fungi-Fungi Inhibition:
 
 In our plates, there are some instances of fungi inhibiting other fungal growth, creating zones of inhibition.
 
@@ -285,6 +287,7 @@ In this image, the second and third streptomycin replicates (bottom row, middle 
 
 Why does fungi-fungi inhibition occur?
 
+##Fungal Growth and location
 
 # Bibliography
 
