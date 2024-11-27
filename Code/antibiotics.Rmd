@@ -163,7 +163,7 @@ Each 100 mm plate had 15 mL of the antibiotic agar added, then was tiled to an a
 
 The plates, inoculated on October 23, were left at room temperature and images were taken on October 25, October 28, and October 29.
 
-Ideally, the antibiotic gradient plates serve as their own control since at one end the concentration of the antibiotic is zero (Weinberg, 1959). Lab strain *E. coli* (strain info pending... emailed Liza) was used as a control.
+Ideally, the antibiotic gradient plates serve as their own control since at one end the concentration of the antibiotic is zero (Weinberg, 1959). Lab strain *Escherichia coli* K12 was used as a control.
 
 
 # Who ever did this section, please make an actual subheading.
