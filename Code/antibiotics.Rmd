@@ -166,13 +166,13 @@ The plates, inoculated on October 23, were left at room temperature and images w
 
 Ideally, the antibiotic gradient plates serve as their own control since at one end the concentration of the antibiotic is zero (Weinberg, 1959). Lab strain *Escherichia coli* K12 was used as a control.
 
-##Results and discussion, Samantha Hallett
-#libraries needed to do code
+#Results and discussion, Samantha Hallett
+##libraries needed to do code
 ```{r}
 library(dplyr)
 library(ggplot2)
 ```
-#Effective concentration 
+##Effective concentration 
 The results present the average effective antibiotic concentration required to inhibit bacterial growth across three observation dates for the antibiotics Ampicilin, Kanamycin, and Streptomycin.
 ```{r}
 avg_effective_conc <- DataMeta %>%
@@ -187,29 +187,36 @@ The average effective concentration of Ampicillin changes over the three observa
 Kanamycin's effective concentration exhibits a gradual upward trend, increasing from 3.90 mg/mL (2024-10-25) to 5.06 mg/mL (2024-10-29). This consistent increase could indicate emerging bacterial resistance to Kanamycinover time. 
 Streptomycin shows a slight increase in its effective concentration, from 6.25 mg/mL (2024-10-25) to 7.08 mg/mL (2024-10-28) followed by a decline to 6.84 (2024-10-29). the near plateau-like trend could suggest steady susceptibility with minimal resistance development.
 The upward trends in Kanamycin and Streptomycin concentrations highlight a potential increase in resistance.
-#resistance threshold
-
+##Resistance threshold
+The resistance threshold results indicate the minimum concentration of each antibiotic required to completely inhibit bacterial growth.
 ```{r}
 resistance_threshold <- DataMeta %>%
   group_by(Antibiotic) %>%
-  filter(Colony_Number == 0) %>% # Only rows with no colonies
+  filter(Lawn_YesNo == "No" & Colony_YesNo == "No") %>%
   summarize(
     Resistance_Threshold = min(AbxConcReached_mgmL, na.rm = TRUE)
   )
 print(resistance_threshold)
 ```
-comparison across antibiotics (to find the most effective antibiotic)
+The results show that no antibiotics were successful in inhibiting the bacterial growth indicates a highly resistant bacterial population. 
+
+##omparison across antibiotics (to find the most effective antibiotic).
+The results of the comparison of antibiotic effectiveness, excluding th NA group, are summarized in the following code/table, which includes the average colonony count and resistance threshold for each antibiotic tested.
 ```{r}
 comparison <- DataMeta %>%
   group_by(Antibiotic) %>%
   summarize(
     Avg_ColonyCount = mean(Colony_Number, na.rm = TRUE), # Lower is better for effectiveness
-    Resistance_Threshold = min(AbxConcReached_mgmL[Colony_Number == 0], na.rm = TRUE)
+    Resistance_Threshold = min(AbxConcReached_mgmL[Lawn_YesNo == "No" & Colony_YesNo == "No"], na.rm = TRUE)
   ) %>%
   arrange(Avg_ColonyCount)
 print(comparison)
 ```
-growth trends
+Ampicillin has an average colony count of 12.33, indicating some level of bacterial growth despite the presence of antibiotic. Streptomycin shows an average colony count of 14.51, while Kanamycin has the highert colony count at 16.69. Since lower colony counts suggest greater antibiotic effectiveness, these results indicate that Kanamycin was the least effective, followed by Streptomycin and Ampicillin. 
+The results indicate that none of the antibiotics tested were able to completely inhibit bacterial growth at the concetrations tested. This suggest that the bacterial strains involved have developed substantial resistance, possibly through genetic mutations or horizontal gene transfer. The finding that all antibiotic tested failed to inhibit growth may indicate cross-resistance mechanism. Bacteria resistant to one antibiotic could have developed resistance to others with similar mechanisms of actions, rendering standard treatment options ineffective.
+
+##Growth trends
+The data presents an analysis of bacterial growth trends under varying conditions for three antibiotics, Ampicillin, Kanamycin and Streptomycin, classified by inflow or outflow.
 ```{r}
 growth_trends <- DataMeta %>%
   group_by(Antibiotic, InOut) %>%
@@ -217,8 +224,12 @@ growth_trends <- DataMeta %>%
     Avg_ColonyCount = mean(Colony_Number, na.rm = TRUE),
     Avg_Concentration = mean(AbxConcReached_mgmL, na.rm = TRUE)
   )
+print(growth_trends)
 ```
-visualize growth trends
+The drastic reduction in colony count in the "out" condition suggests that Ampicillin is more effective when the bacteria are exposed to an environment where they are removed from promoting conditions or may be under stress. This could indicate a conditional resistence mechanism that might involve environmental factors or the state of the bacteria. 
+
+##Visualize growth trends
+The plot visualizes the relationship between antibiotic concentration and colony count for different antibiotics, categorized by inflow or outflow. The scatter plot is overlaid with a smoothed line, which helps to visualize the general trend of bacterial growth in relationship to the antibiotic concentration, with seperatw plots for each antibiotic.
 ```{r}
 ggplot(DataMeta, aes(x = AbxConcReached_mgmL, y = Colony_Number, color = InOut)) +
   geom_point() +
@@ -231,15 +242,28 @@ ggplot(DataMeta, aes(x = AbxConcReached_mgmL, y = Colony_Number, color = InOut))
   ) +
   theme_minimal()
 ```
-Environmental impact 
+For most antibiotics, as the antibiotic concentration increases, the colony count tends to decrease, indicating that higher concentrations of the antibiotic are generally more effective at inhibiting bacterial growth. This is expected as antibiotics typically have a dose-dependent effect.
+The LOESS smoothed curves show a non-linear relationship, where at lower concentrations, bacteria tend to grow more, and at higher concentrations, colony counts drop. However, the relationship is not always perfectly linear, and the plot suggests potential plateau effects where increasing antibiotic concentration further does not result in additional colony inhibition.
+The plot differentiates between the In and Out conditions with color coding. In many cases, the Out condition (which could represent a more controlled or stressed environment) tends to show lower colony counts at higher antibiotic concentrations, suggesting that the bacteria are more susceptible to the antibiotics when exposed in this manner.
+The plot differentiates between the In and Out conditions with color coding. In many cases, the Out condition (which could represent a more controlled or stressed environment) tends to show lower colony counts at higher antibiotic concentrations, suggesting that the bacteria are more susceptible to the antibiotics when exposed in this manner.
+Ampicillin trend: The trend for Ampicillin shows a clear decrease in colony counts with increasing concentration, particularly in the Out condition, indicating that Ampicillin is effective at inhibiting growth at higher concentrations. However, at very low concentrations, there is still significant bacterial growth in the In condition, which could indicate partial resistance or less effective exposure.
+Kanamycin trend: The Kanamycin trend shows a less steep decline in colony count with increasing concentration, particularly in the In condition. This suggests that Kanamycin might be less effective in inhibiting growth at lower concentrations, and bacteria may exhibit partial resistance. The Out condition appears to show a slightly more defined decrease in colony count, but the trend is still not as sharp as with other antibiotics.
+Streptomycin trend: Streptomycin shows an intermediate trend, where the colony count decreases with increasing antibiotic concentration, but the decline is not as pronounced as Ampicillin. The Out condition generally shows a more consistent decrease in colony count with increasing concentration, whereas the In condition exhibits more variation in growth despite the higher concentrations.
+This visualization provides valuable insights into how bacterial growth responds to varying concentrations of antibiotics under different conditions. It suggests that antibiotic efficacy is influenced not only by the concentration but also by the inoculation condition, with some antibiotics showing stronger inhibition when bacteria are exposed in a stressed environment (Out condition). Moreover, non-linear trends, particularly the plateau effect at higher concentrations, indicate that bacterial resistance mechanisms may be at play. The findings emphasize the need for further investigation into the factors contributing to antibiotic resistance and highlight the importance of understanding how growth conditions influence bacterial susceptibility to antibiotics.
+
+##Environmental impact 
+The results show the average colony count for three different locations and their corresponding antibiotic treatments. This analysis helps assess the differential effectiveness of the antibiotics across these locations. The colony count is an indicator of bacterial growth, with lower counts generally suggesting higher effectiveness in inhibiting bacterial growth.
 ```{r}
 location_effectiveness <- DataMeta %>%
   group_by(Location, Antibiotic) %>%
   summarize(
     Avg_ColonyCount = mean(Colony_Number, na.rm = TRUE)
   )
+print(location_effectiveness)
 ```
-visualize environmental impact
+The data reveals that antibiotic effectiveness varies significantly by location, emphasizing the importance of considering environmental and microbial factors when selecting antibiotics for treatment. Streptomycin appears to be the most effective in Location 2, while Ampicillin is more effective in Location 1. These results suggest that a tailored approach, based on location-specific antibiotic resistance patterns, could improve the success of antibiotic treatment strategies.
+
+##Visualize environmental impact
 ```{r}
 ggplot(location_effectiveness, aes(x = Location, y = Avg_ColonyCount, fill = Antibiotic)) +
   geom_bar(stat = "identity", position = "dodge") +
