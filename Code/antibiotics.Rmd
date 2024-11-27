@@ -183,8 +183,12 @@ avg_effective_conc <- DataMeta %>%
   )
 print(avg_effective_conc)
 ```
+The average effective concentration of Ampicillin changes over the three observation datas, decreassing from 8.17 mg/mL (2024-10-25) to 6.66 mg/mL (2024-10-28) before increasing to 7.13 mg/mL (2024-10-29). The decrease in concentration on 2024-20-28 could suggest adaptive bacterial susceptibility to Ampicillin.
+Kanamycin's effective concentration exhibits a gradual upward trend, increasing from 3.90 mg/mL (2024-10-25) to 5.06 mg/mL (2024-10-29). This consistent increase could indicate emerging bacterial resistance to Kanamycinover time. 
+Streptomycin shows a slight increase in its effective concentration, from 6.25 mg/mL (2024-10-25) to 7.08 mg/mL (2024-10-28) followed by a decline to 6.84 (2024-10-29). the near plateau-like trend could suggest steady susceptibility with minimal resistance development.
+The upward trends in Kanamycin and Streptomycin concentrations highlight a potential increase in resistance.
+#resistance threshold
 
-resistance threshold
 ```{r}
 resistance_threshold <- DataMeta %>%
   group_by(Antibiotic) %>%
