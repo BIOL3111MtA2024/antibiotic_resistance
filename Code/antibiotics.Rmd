@@ -6,6 +6,7 @@ author:
 - Ruby Muzzatti^1^*
 - Avery MacKinnon^1^*
 - Kingsley Ayiah^1^*
+- Samantha Hallett^1^*
 output:
   bookdown::html_document2:
     code_folding: show
@@ -165,13 +166,14 @@ The plates, inoculated on October 23, were left at room temperature and images w
 
 Ideally, the antibiotic gradient plates serve as their own control since at one end the concentration of the antibiotic is zero (Weinberg, 1959). Lab strain *Escherichia coli* K12 was used as a control.
 
-#Results and discussion, Samantha Hallett
-libraries needed to do code
+##Results and discussion, Samantha Hallett
+#libraries needed to do code
 ```{r}
 library(dplyr)
 library(ggplot2)
 ```
-Effective concentration 
+#Effective concentration 
+The results present the average effective antibiotic concentration required to inhibit bacterial growth across three observation dates for the antibiotics Ampicilin, Kanamycin, and Streptomycin.
 ```{r}
 avg_effective_conc <- DataMeta %>%
   filter(Colony_Number > 0) %>% # Include rows where colonies are present
@@ -181,6 +183,7 @@ avg_effective_conc <- DataMeta %>%
   )
 print(avg_effective_conc)
 ```
+
 resistance threshold
 ```{r}
 resistance_threshold <- DataMeta %>%
