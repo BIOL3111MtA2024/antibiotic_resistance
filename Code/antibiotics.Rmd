@@ -143,7 +143,7 @@ labs(title = "Sampling Locations in Sackville Waterfowl Park",
               caption = "October, 2024")
 ```
  
-Protocols from Szybalski and Bryson (1952) and Lui *et al.* (2011) were adapted to mkae antibiotic gradient agar plates. 
+Protocols from Szybalski and Bryson (1952) and Lui *et al.* (2011) were adapted to make antibiotic gradient agar plates. 
 
 Antibiotics were water soluble, tryptic soy agar was divided into 3 for the antibiotic mixtures before being autoclaved, to ensure no contamination.
 
