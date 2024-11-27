@@ -5,6 +5,7 @@ author:
 - Douglas Campbell^1^*
 - Ruby Muzzatti^1^*
 - Avery MacKinnon^1^*
+- Kingsley Ayiah^1^*
 output:
   bookdown::html_document2:
     code_folding: show
@@ -39,17 +40,14 @@ DAC was supported by the Canada Research Chairs.
 File import functions read files into R objects, commonly data frames.
 I love github
 
-Things Kingsley will do
+# Overview of analysis, Kingsley
 
 Relative abundance of colonies by flow type (inflow vs. outflow).
-Relative abundance of colonies by antibiotics.
-Combined abundance of colonies by flow type and antibiotics (stacked or grouped).
+Abundance of colonies by flow type and antibiotics (grouped).
 Interpretation
 Inflow vs. Outflow: This will show whether the colony abundance is higher in the inflow or the outflow of your sample.
 
-Antibiotic Comparison: You will observe which antibiotic showed higher or lower bacterial counts, reflecting relative resistance or susceptibility.
-
-Combined abundance: This will show a detailed breakdown of colony abundance for each antibiotic within inflow and outflow categories.
+Relative abundance for flowtype and antibiotic: This will show a detailed breakdown of colony abundance for each antibiotic within the inflow and outflow.
 
 Note, Kingsley is excluding the colonies in a  lawn becaause  a lawn contains infinity number of colonies
 
@@ -104,7 +102,7 @@ DataSheet <- googlesheets4::read_sheet("https://docs.google.com/spreadsheets/d/1
   #mutate(ExpDate = lubridate::ymd(ExpDate))
 ```
 
-## Merged  DataSheet with MetaData by the value of PlateID
+## Merged  DataSheet with MetaData by the value of PlateID, 
 ```{r merging DataSheet with MetaData by the value of PlateID}
 DataMeta <- left_join(x  = DataSheet, y = MetaData, by = "PlateID")
 ```
@@ -270,7 +268,28 @@ ggplot(DataMeta, aes(x = AbxConcReached_mgmL, y = Colony_Number, color = Antibio
 
 ```
 
+# Result, Kingsley 
+
+## Relative abundance of colonies by flow type (inflow vs. outflow)
 ```{r}
+ flow_relative <- DataMeta %>%
+filter(!is.na(InOut))%>%
+  group_by(InOut)%>%
+    summarise(TotalCount = sum(Colony_Number, na.rm = TRUE)) %>%
+  ungroup()
+
+```
+  
+## Plot of flow type against relative count of colonies  
+```{r Flow_relative}
+flow_relative %>%
+  ggplot()+
+  geom_bar(aes(x = InOut, y = TotalCount, colour = InOut, fill = InOut ), stat = "identity")
+```
+
+## Analysis of Relative abundance of colonies for flow  type and antibiotics
+
+```{r Abundance of flowtype  and  antibiotics}
  flow_antibiotic_relative <- DataMeta %>%
 filter(!is.na(InOut))%>%
   group_by(Antibiotic, InOut)%>%
@@ -282,7 +301,8 @@ filter(!is.na(InOut))%>%
      #mutate(RelativeAbundance = (TotalCount / sum(TotalCount)) * 100)
 ```
 
-```{r}
+## Bar plot comparing relative abundance of colony for flowtype and antibitics
+```{r Figure showing bar plot of flowtype  and  antibiotics}
 flow_antibiotic_relative %>%
   ggplot()+
   geom_bar(aes(x = Antibiotic, y = TotalCount, colour = InOut, fill = InOut ), stat = "identity")
