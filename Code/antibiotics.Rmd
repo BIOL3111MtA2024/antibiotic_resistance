@@ -272,19 +272,40 @@ ggplot(DataMeta, aes(x = AbxConcReached_mgmL, y = Colony_Number, color = Antibio
 
 ## Relative abundance of colonies by flow type (inflow vs. outflow)
 ```{r}
- flow_relative <- DataMeta %>%
-filter(!is.na(InOut))%>%
-  group_by(InOut)%>%
-    summarise(TotalCount = sum(Colony_Number, na.rm = TRUE)) %>%
-  ungroup()
+flow_relative_comparison <- DataMeta %>%
+  filter(!is.na(InOut)) %>%                     # Remove any NA values in the InOut column
+  group_by(InOut) %>%                           # Group only by InOut (flow type)
+  summarise(
+    TotalCount = sum(Colony_Number, na.rm = TRUE),  # Sum Colony_Number for each InOut group
+    .groups = 'drop'                               # Drop groups to simplify the output
+  ) %>%
+  mutate(
+    OverallTotal = sum(TotalCount),             # Calculate the grand total of all groups
+    RelativeAbundance = (TotalCount / OverallTotal)*100  # Calculate relative abundance for each InOut
+  )
 
 ```
   
-## Plot of flow type against relative count of colonies  
+  
+## Plot of flow type against relative Abundance of colonies  
 ```{r Flow_relative}
-flow_relative %>%
-  ggplot()+
-  geom_bar(aes(x = InOut, y = TotalCount, colour = InOut, fill = InOut ), stat = "identity")
+#flow_relative %>%
+  #ggplot()+
+  #geom_bar(aes(x = InOut, y = RelativeAbundance, colour = InOut, fill = InOut ), stat = "identity")
+
+library(ggplot2)
+
+ggplot(flow_relative_comparison, aes(x = InOut, y = RelativeAbundance, fill = InOut)) +
+  geom_bar(stat = "identity", color = "black") +   # Bar plot using pre-calculated values
+  labs(
+    title = "Relative Abundance by Flow Type (In vs Out)",
+    x = "Flow Type (In/Out)",
+    y = "Relative Abundance",
+    fill = "Flow Type"
+  ) +
+  scale_y_continuous(labels = scales::percent) +    # Display y-axis as percentages
+  theme_minimal()                                   # Clean plot style
+
 ```
 
 ## Analysis of Relative abundance of colonies for flow  type and antibiotics
@@ -293,8 +314,11 @@ flow_relative %>%
  flow_antibiotic_relative <- DataMeta %>%
 filter(!is.na(InOut))%>%
   group_by(Antibiotic, InOut)%>%
-    summarise(TotalCount = sum(Colony_Number, na.rm = TRUE)) %>%
-  ungroup()
+    summarise(TotalCount = sum(Colony_Number, na.rm = TRUE), .groups = 'drop') %>%
+  #ungroup()
+mutate(
+    OverallTotal = sum(TotalCount),          # Calculate overall total count (In + Out)
+    RelativeAbundance = TotalCount / OverallTotal*100)  # Calculate relative abundance as a proportion
                                
                                
        #                        , .by = c() , ))%>%
@@ -305,7 +329,7 @@ filter(!is.na(InOut))%>%
 ```{r Figure showing bar plot of flowtype  and  antibiotics}
 flow_antibiotic_relative %>%
   ggplot()+
-  geom_bar(aes(x = Antibiotic, y = TotalCount, colour = InOut, fill = InOut ), stat = "identity")
+  geom_bar(aes(x = Antibiotic, y = RelativeAbundance, colour = InOut, fill = InOut ), stat = "identity")
 ```
 
 #
