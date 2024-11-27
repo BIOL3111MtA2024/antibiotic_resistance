@@ -200,7 +200,7 @@ print(resistance_threshold)
 ```
 The results show that no antibiotics were successful in inhibiting the bacterial growth indicates a highly resistant bacterial population. 
 
-##omparison across antibiotics (to find the most effective antibiotic).
+##Comparison across antibiotics (to find the most effective antibiotic).
 The results of the comparison of antibiotic effectiveness, excluding th NA group, are summarized in the following code/table, which includes the average colonony count and resistance threshold for each antibiotic tested.
 ```{r}
 comparison <- DataMeta %>%
@@ -264,6 +264,7 @@ print(location_effectiveness)
 The data reveals that antibiotic effectiveness varies significantly by location, emphasizing the importance of considering environmental and microbial factors when selecting antibiotics for treatment. Streptomycin appears to be the most effective in Location 2, while Ampicillin is more effective in Location 1. These results suggest that a tailored approach, based on location-specific antibiotic resistance patterns, could improve the success of antibiotic treatment strategies.
 
 ##Visualize environmental impact
+The bar plot visualizes the average colony for the three antibiotics across three different locations, providing insight into how the environmental conditions at each location affect antibiotic effectiveness. The colony count is a measure of bacterial growth, with lower counts suggesting more effective inhibition by the antibiotic.
 ```{r}
 ggplot(location_effectiveness, aes(x = Location, y = Avg_ColonyCount, fill = Antibiotic)) +
   geom_bar(stat = "identity", position = "dodge") +
@@ -274,7 +275,9 @@ ggplot(location_effectiveness, aes(x = Location, y = Avg_ColonyCount, fill = Ant
   ) +
   theme_minimal()
 ```
-law presence
+
+##Law presence
+The correlation analysis provides insights into the relationship between antibiotic concentration and colony counts for the three antibiotics: Ampicillin, Kanamycin, and Streptomycin. The correlation values indicate the strength and direction of the linear relationship between these two variables, with higher positive correlations suggesting that higher antibiotic concentrations result in lower colony counts, indicating greater antibiotic effectiveness.
 ```{r}
 law_relationship <- DataMeta %>%
   group_by(Antibiotic) %>%
@@ -285,7 +288,13 @@ law_relationship <- DataMeta %>%
 print(law_relationship)
 
 ```
-visualize law relationship
+The correlation between Ampicillin concentration and colony count is 0.37, indicating a weak positive correlation. This suggests that as the concentration of Ampicillin increases, the colony count tends to increase slightly, which is an unexpected result given that higher antibiotic concentrations are typically associated with lower colony counts (indicating greater inhibition). This weak positive correlation may be influenced by factors such as bacterial resistance, inconsistent application of the antibiotic, or other environmental variables that hinder its effectiveness. Further investigation is needed to explore the underlying reasons for this trend.
+Similar to Ampicillin, Kanamycin also exhibits a weak positive correlation of 0.38. This indicates that, like Ampicillin, increasing the concentration of Kanamycin has a minor tendency to result in higher colony counts, contrary to the expected outcome. This weak positive correlation could be attributed to bacterial resistance mechanisms that reduce the effectiveness of the antibiotic at higher concentrations, or it might suggest saturation effects, where beyond a certain concentration, the bacteria no longer respond to increased antibiotic levels.
+The correlation for Streptomycin is even weaker, at 0.16, indicating a very weak positive correlation between antibiotic concentration and colony count. This suggests that the concentration of Streptomycin has an almost negligible effect on bacterial growth. In other words, regardless of the Streptomycin concentration, the bacterial colonies still show significant growth. This could indicate high bacterial resistance to Streptomycin, possibly due to the presence of resistant bacterial strains in the sample, or it could suggest that Streptomycin's effectiveness is limited under the experimental conditions used.
+The weak positive correlations observed across all three antibiotics (Ampicillin, Kanamycin, and Streptomycin) indicate that higher antibiotic concentrations do not consistently result in lower colony counts, as would be expected in typical antibiotic efficacy testing. In fact, the results suggest that the bacteria might be exhibiting resistance mechanisms that reduce the effectiveness of increasing antibiotic concentrations.
+
+##Visualize law relationship
+The scatter plot with linear regression line provides a visual representation of the relationship between antibiotic concentration and colony count across different antibiotics. The graph usees antibiotic concentration on the x-axis and colony count on the y-axis, with points colored according to the antibiotic type. A linear regression line is superimposed to assess the overall trend of the data, excluding confidence intervals.
 ```{r}
 ggplot(DataMeta, aes(x = AbxConcReached_mgmL, y = Colony_Number, color = Antibiotic)) +
   geom_point() +
