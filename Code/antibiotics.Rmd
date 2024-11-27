@@ -143,7 +143,7 @@ labs(title = "Sampling Locations in Sackville Waterfowl Park",
               caption = "October, 2024")
 ```
  
-Protocols from Szybalski and Bryson (1952) and Lui *et al.* (2011) were adapted to make antibiotic gradient agar plates. 
+Protocols from Szybalski and Bryson (1952) and Lui *et al.* (2011) were adapted to mkae antibiotic gradient agar plates. 
 
 Antibiotics were water soluble, tryptic soy agar was divided into 3 for the antibiotic mixtures before being autoclaved, to ensure no contamination.
 
@@ -165,10 +165,110 @@ The plates, inoculated on October 23, were left at room temperature and images w
 
 Ideally, the antibiotic gradient plates serve as their own control since at one end the concentration of the antibiotic is zero (Weinberg, 1959). Lab strain *E. coli* (strain info pending... emailed Liza) was used as a control.
 
-
-# Who ever did this section, please make an actual subheading.
+#Results and discussion, Samantha Hallett
+libraries needed to do code
 ```{r}
-# Relative abundance for FlowType and Antibiotic
+library(dplyr)
+library(ggplot2)
+```
+Effective concentration 
+```{r}
+avg_effective_conc <- DataMeta %>%
+  filter(Colony_Number > 0) %>% # Include rows where colonies are present
+  group_by(Antibiotic, ObservationDate) %>%
+  summarize(
+    Avg_Concentration = mean(AbxConcReached_mgmL, na.rm = TRUE)
+  )
+print(avg_effective_conc)
+```
+resistance threshold
+```{r}
+resistance_threshold <- DataMeta %>%
+  group_by(Antibiotic) %>%
+  filter(Colony_Number == 0) %>% # Only rows with no colonies
+  summarize(
+    Resistance_Threshold = min(AbxConcReached_mgmL, na.rm = TRUE)
+  )
+print(resistance_threshold)
+```
+comparison across antibiotics (to find the most effective antibiotic)
+```{r}
+comparison <- DataMeta %>%
+  group_by(Antibiotic) %>%
+  summarize(
+    Avg_ColonyCount = mean(Colony_Number, na.rm = TRUE), # Lower is better for effectiveness
+    Resistance_Threshold = min(AbxConcReached_mgmL[Colony_Number == 0], na.rm = TRUE)
+  ) %>%
+  arrange(Avg_ColonyCount)
+print(comparison)
+```
+growth trends
+```{r}
+growth_trends <- DataMeta %>%
+  group_by(Antibiotic, InOut) %>%
+  summarize(
+    Avg_ColonyCount = mean(Colony_Number, na.rm = TRUE),
+    Avg_Concentration = mean(AbxConcReached_mgmL, na.rm = TRUE)
+  )
+```
+visualize growth trends
+```{r}
+ggplot(DataMeta, aes(x = AbxConcReached_mgmL, y = Colony_Number, color = InOut)) +
+  geom_point() +
+  geom_smooth(method = "loess") +
+  facet_wrap(~ Antibiotic) +
+  labs(
+    title = "Growth Trends: Colony Count vs Antibiotic Concentration",
+    x = "Antibiotic Concentration",
+    y = "Colony Count"
+  ) +
+  theme_minimal()
+```
+Environmental impact 
+```{r}
+location_effectiveness <- DataMeta %>%
+  group_by(Location, Antibiotic) %>%
+  summarize(
+    Avg_ColonyCount = mean(Colony_Number, na.rm = TRUE)
+  )
+```
+visualize environmental impact
+```{r}
+ggplot(location_effectiveness, aes(x = Location, y = Avg_ColonyCount, fill = Antibiotic)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  labs(
+    title = "Environmental Impact on Antibiotic Effectiveness",
+    x = "Location",
+    y = "Average Colony Count"
+  ) +
+  theme_minimal()
+```
+law presence
+```{r}
+law_relationship <- DataMeta %>%
+  group_by(Antibiotic) %>%
+  summarize(
+    Correlation = cor(Colony_Number, AbxConcReached_mgmL, use = "complete.obs")
+  )
+
+print(law_relationship)
+
+```
+visualize law relationship
+```{r}
+ggplot(DataMeta, aes(x = AbxConcReached_mgmL, y = Colony_Number, color = Antibiotic)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  labs(
+    title = "Relationship Between Antibiotic Concentration and Colony Count",
+    x = "Antibiotic Concentration",
+    y = "Colony Count"
+  ) +
+  theme_minimal()
+
+```
+
+```{r}
  flow_antibiotic_relative <- DataMeta %>%
 filter(!is.na(InOut))%>%
   group_by(Antibiotic, InOut)%>%
@@ -185,8 +285,6 @@ flow_antibiotic_relative %>%
   ggplot()+
   geom_bar(aes(x = Antibiotic, y = TotalCount, colour = InOut, fill = InOut ), stat = "identity")
 ```
-
-
 
 
 # Results, Ruby
