@@ -458,8 +458,9 @@ A question that arises is whether bacterial or fungal infections are more harmfu
 
 Fungi are naturally resistant to antibiotics that kill commensal bacteria (which are those naturally occuring in/on the body), and therefore when antibiotics are used there is an increased likelihood of fungal infections (Jiang et al., 2017). With less bacterial growth, there would be more resources available to the fungi. The antibiotics that we tested (ampicillin, kanamycin, streptomycin) all kill commensal bacteria. This would imply that the more bacteria growing on a plate, the less fungal growth would be observed. 
 
-
 For ampicillin in particular, there are a lot of commensal bacteria that have built up resistance to the antibiotic due to its widespread use in medicine and agriculture (Gjonbalaj et. al., 2020). These bacteria have even been found to degrade ampicillin (Gjonbalaj et. al., 2020), and therefore theoretically this should lead to less fungal growth because there would be less antibiotic present and more commensal bacteria competing for the resources available in the plates. 
+
+In our experiment, this was observed. 
 
 ##Taking a closer look at In3:
 
@@ -489,7 +490,8 @@ For example, lets take a look at In2:
 knitr::include_graphics("~/Documents/github/antibiotic_resistance/Data/Images/2024_10_28/IMG_2375.jpeg")
 ```
 
-In this image, you can see in the third streptomycin replicate (bottom right) that there is inibition of one fungi on the growth of another. The fluffy white fungus has grown around the circular, more beige fungus, leaving what can be described as a zone of inhibition between the two where there is no growth (edges of the two fungi do not extend and meet). 
+In this image, you can see in the third streptomycin replicate (bottom right) that there is inhibition of one fungi on the growth of another. The fluffy white fungus has grown around the circular, more beige fungus, leaving what can be described as a zone of inhibition between the two where there is no growth (edges of the two fungi do not extend and meet). 
+Here is another example in Out1:
 
 ```{r Calling up Image for Out1, October 29, 2024}}
 knitr::include_graphics("~/Documents/github/antibiotic_resistance/Data/Images/2024_10_29/IMG_2400.jpeg")
@@ -501,7 +503,7 @@ In this image, the second and third streptomycin replicates (bottom row, middle 
 
 ##Fungal Growth and location
 
-Upon observation, there is no apparent trend in the location of fungal growth on the plates (in terms of antibiotic concentration). Along with this, there was no apparent trend/difference in fungal growth between the inlet and outlet locations. 
+Upon observation, there is no apparent trend in the location of fungal growth on the plates (in terms of antibiotic concentration). Along with this, there was no apparent trend/difference in fungal growth between the inlet and outlet locations. This makes sense because, as described by Jiang et al. (2017), fungi can have natural resistance to antibiotics. If the antibiotic concentration did play a role in the location of fungal growth (unlikely), no evidence of a trend could imply that significant diffusion of the antibiotic gradient in the plates has occurred. 
 
 ##Future Applications
 
