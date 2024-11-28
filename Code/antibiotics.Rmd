@@ -512,7 +512,7 @@ In this image, the second and third streptomycin replicates (bottom row, middle 
 
 What causes this inhibition? 
 
-A possibility is competition for resources, but some fungi are known to produce fungicides, inhibiting the growth of other fungi or mold nearby (Davies et al., 2021). Fungicides have possible applications in agriculture, specifically protecting food stores from fungal infection (Davies et al., 2021). 
+A possibility is the competition for resources, but some fungi are known to produce fungicides, inhibiting the growth of other fungi or mold nearby (Davies et al., 2021). Fungicides have possible applications in agriculture, specifically protecting food stores from fungal infection (Davies et al., 2021). 
 
 ##Fungal Growth and location
 
