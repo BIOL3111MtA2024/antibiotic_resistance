@@ -355,6 +355,8 @@ ggplot(flow_relative_comparison, aes(x = InOut, y = RelativeAbundance, fill = In
 
 ```
 
+
+
 The inflow  has a higher relative abundance, accounting for approximately 60% of the total bacterial colony in the community.
 The outflow shows a reduced relative abundance of about 40%, indicating a decrease in the proportion of resistant bacteria as water exits the waterfowl park.
 The significant difference between the inlet and outlet indicates that the Sackville Waterfowl Park effectively reduces the relative abundance of antibiotic-resistant bacteria. The reduction suggests that natural processes such as sedimentation, microbial interactions, or dilution play a role in mitigating bacterial population as water moves through the park.
@@ -385,24 +387,25 @@ flow_antibiotic_relative %>%
   geom_bar(aes(x = Antibiotic, y = RelativeAbundance, colour = InOut, fill = InOut ), stat = "identity")
 ```
 
+
 ### Ampicillin.
  Ampicillin resistant bacteria are present at the inflow but are almost entirely absent by the time the water exits the park.This suggests that the Sackville Waterfowl Park is effective at reducing Ampicillin-resistant bacteria. Possible ways could be natural filtration through sediment, competition with other bacteria for nutrient which lead to a reduction in their population as water exit the park.
 ### Kanamycin 
-Both the relative abundance of Inflow and Outflow quite are large, though the Outflow is slightly shorter. This suggest that there is the presence of Kanamycin-resistant bacteria in both the inflow and outflow of the waterfowl park. But the abundance is a little more pronounce at the inflow. This is somehow consistent with what we observed with Ampicillin.  The waterfowl park does a great job reducing the colony of bacteria at the inflow.
+Both the relative abundance of Inflow and Outflow quite are large, and the Outflow remains fairly constant. This suggest that there is the presence of Kanamycin-resistant bacteria in both the inflow and outflow of the waterfowl park. But the abundance is a little more pronounce at the inflow. 
 Although the Relative abundance decreases slightly in the outflow, a good number of Kanamycin-resistant bacteria remain, indicating that the park is less effective at reducing these resistant strains.
 This may be due to the robustness of Kanamycin-resistant bacteria or the environmental factors that allow them to persist in the water.
 ### Streptomycin 
 Shows the tallest bars in the graph, with the Inflow slightly taller than the Outflow.
-Streptomycin-resistant bacteria are highly prevalent in both the inflow and outflow water.
+Streptomycin-resistant bacteria are highly prevalent in both the inflow and outflow water. 
 But there is some reduction in resistance from the inflow to outflow, the persistence of high levels suggests that the waterfowl park is not very effective reducing the population of the Streptomycin-resistant bacteria.
-Streptomycin may have unique characteristics (e.g., slower degradation or more stable resistance mechanisms) that make it difficult for natural processes to break down the resistant bacteria.
+Streptomycin resistant bacteria may have features (e.g., slower degradation or more stable resistance mechanisms) that make it difficult for natural processes to break down the resistant bacteria.
 ### Discussion
 The Sackville Waterfowl Park is more effective at reducing bacteria with Ampicillin resistance than Kanamycin or Streptomycin resistance.
 Kanamycin and Streptomycin-resistant bacteria persist in large quantities, suggesting either the park’s natural processes are insufficient to eliminate them or that these bacteria are particularly more stable in this environment.
-### Possible natural mechanisms in play.
-Natural Filtration is one way by which wetlands reduce population of bacteria moving across them. Wetlands and lagoons often remove bacteria through sedimentation and filtration, which seems to be working well for Ampicillin-resistant bacteria.
+### Possible natural mechanisms at play.
+Natural Filtration is one way by which wetlands reduce population of bacteria moving across them. Wetlands and lagoons often remove bacteria through sedimentation and filtration, which seems to be working well for Ampicillin-resistant bacteria(Díaz et al., 2010).
 Another process is by microbial Competition. Microbial communities in the wetland may be outcompeting Ampicillin-resistant strains but may be less effective against Kanamycin and Streptomycin-resistant bacteria.
-Kanamycin and Streptomycin-resistant genes may be more widely distributed or stable, allowing them to persist in the environment even as the water flows through the park.
+Kanamycin and Streptomycin-resistant genes may be more widely distributed or have stable genes, allowing them to persist in the environment even as the water flows through the park.
 ### Potential Environmental and Public Health Implications
 The persistence of Kanamycin and Streptomycin resistance is concerning because it suggests that water leaving the park could still carry antibiotic-resistant bacteria into downstream environments.
 If these bacteria enter larger water bodies or agricultural areas, they could pose a risk to human health, wildlife, and the spread of antibiotic resistance.
@@ -536,6 +539,8 @@ Campoy, S., Adrio, J.L., 2017. Antifungals. Biochemical Pharmacology, Antibiotic
 Cong, L., Chen, C., Mao, S., Han, Z., Zhu, Z., Li, Y., 2023. Intestinal bacteria—a powerful weapon for fungal infections treatment. Front. Cell. Infect. Microbiol. 13. https://doi.org/10.3389/fcimb.2023.1187831
 
 Davies, C.R., Wohlgemuth, F., Young, T., Violet, J., Dickinson, M., Sanders, J.-W., Vallieres, C., Avery, S.V., 2021. Evolving challenges and strategies for fungal control in the food supply chain. Fungal Biol Rev 36, 15–26. https://doi.org/10.1016/j.fbr.2021.01.003
+
+Díaz, F. J., O’Geen, A. T., & Dahlgren, R. A. (2010). Efficacy of constructed wetlands for removal of bacterial contamination from agricultural return flows. Agricultural Water Management, 97(11), 1813–1821. https://doi.org/10.1016/j.agwat.2010.06.015
 
 Fisher, M.C., Henk, D.A., Briggs, C.J., Brownstein, J.S., Madoff, L.C., McCraw, S.L., Gurr, S.J., 2012. Emerging fungal threats to animal, plant and ecosystem health. Nature 484, 186–194. https://doi.org/10.1038/nature10947
 
