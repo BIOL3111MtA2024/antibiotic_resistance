@@ -495,7 +495,7 @@ knitr::include_graphics("~/Documents/github/antibiotic_resistance/Data/Images/20
 
 In this image, the second and third streptomycin replicates (bottom row, middle and far right) also show fungi-fungi inhibition. There are similar zones of inhibition forming between different fungi growing on these plates. In the second streptomycin replicate, you can see the beige and white fungi will not extend and grow near each other (this image was from the last day of data collection so any extension that could have happened would have at this point), and in the third replicate a similar event can be seen with the beige fungus and the white fungi with green centres. 
 
-Why does fungi-fungi inhibition occur?
+
 
 ##Fungal Growth and location
 
