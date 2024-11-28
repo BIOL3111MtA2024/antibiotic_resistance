@@ -164,7 +164,6 @@ Each 100 mm plate had 15 mL of the antibiotic agar added, then was tiled to an a
 
 1 mL of each sample was cultured on three antibiotic gradient plates with the tryptic soy agar and antibiotic (streptomycin, ampicillin, kanamycin) gradient ranging from 0 to ~10 mg/mL. 
 
-
 ```{r image_map, fig.cap="Schematic diagram of plate set up, drawn on GoodNotes, Ruby Muzzatti"}
 knitr::include_graphics("~/Documents/github/antibiotic_resistance/Data/Images/image_map.jpeg")
 ```
@@ -449,7 +448,6 @@ October 29, 2024: See in Kanamycin Out 3 (b, c), Streptomycin Out 3 (a, b, c). C
 knitr::include_graphics("~/Documents/github/antibiotic_resistance/Data/Images/2024_10_29/IMG_2394.jpeg")
 ```
 
-
 # Discussion, Ruby
 ## Ampicillin Trends
 Unlike the other antibiotics, very little diversity is seen in Ampicillin, no matter the location of the water sample.
@@ -458,6 +456,7 @@ The cream/yellow microbes may have already been resistant to Ampicillin, allowin
 ## Pink Microbe
 This microbe was seen in relatively low abundance (plate coverage) in the Out 3 samples, not including ampicillin. It stuck out because its colour and morphology ("paint splatter) was unique. The small amount of the microbe seen on kanamycin replicate a on October 28th could not be seen the next day on October 29th. The only noticeable change in that plate over the day is the slight growth of fungi on the plate.
 Identification was attempted by looking at known bacteria with similar morphology on TSA (online), but no identification could be made. 
+
 
 # Results and Discussion, Avery
 
