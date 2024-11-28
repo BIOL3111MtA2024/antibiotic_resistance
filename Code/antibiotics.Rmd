@@ -405,7 +405,10 @@ If these bacteria enter larger water bodies or agricultural areas, they could po
 
 ## Ampicillin Trends
 October 25, 2024: Opaque cream colour lawn is seen in Ampicillin Out 2 (a and b), Out 3 (a, b, c), Out 1 (a, b, c). 
-Semi opaque cream colour lawn in Ampicillin Out 2 (c), In 2 (a, b), In 1 (a, b, c), In 3 (a, b, c).
+Semi opaque cream colour lawn in Ampicillin Out 2 (c), In 2 (a, b), In 1 (a, b, c), In 3 (a, b, c). See IMG_5585.
+```{r IMG_5585, In3, October 25}
+knitr::include_graphics("~/Documents/github/antibiotic_resistance/Data/Images/2024_10_25/IMG_5585.jpeg")
+```
 
 October 28, 2024: Opaque cream/mustard lawn seen in Ampicillin In 1 (a, b, c), Out 3 (a, b, c), Out 1 (a, b, c).
 Semi opaque cream colour lawn in Ampicillin Out 2 (a, b, c), In 2 (a, b).
