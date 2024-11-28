@@ -472,9 +472,15 @@ Why does fungi-fungi inhibition occur?
 
 Upon observation, there is no apparent trend in the location of fungal growth on the plates (in terms of antibiotic concentration). Along with this, there was no apparent trend/difference in fungal growth between the inlet and outlet locations. 
 
+##Future Applications
+
+This experiment shows evidence that with increased bacterial growth there is less fungal growth, and this idea has some promising applications in healthcare. A study by Cong et. al., (2023) examines the possibility of using different bacteria to combat fungal infections. Specifically, commensal bacteria are mentioned. Supplementation of these bacteria has been shown to decrease the severity of fungal infections (less fungal growth observed) and in some cases even increase organisms' ability to fight these infections through an production of more macrophages for example (Cong et. al., 2023). The fungal growth in this experiment does exhibit this, the more bacterial growth, the less fungal growth present. This is a promising area of study and is very necessary, as there are not a whole lot of antifungal treatments available and drug resistance is a growing problem (Cong et. al., 2023). 
+
 # Bibliography
 
 Bondarczuk, K., Markowicz, A., Piotrowska-Seget, Z., 2016. The urgent need for risk assessment on the antibiotic resistance spread via sewage sludge land application. Environment International 87, 49–55. https://doi.org/10.1016/j.envint.2015.11.011
+
+Cong, L., Chen, C., Mao, S., Han, Z., Zhu, Z., Li, Y., 2023. Intestinal bacteria—a powerful weapon for fungal infections treatment. Front. Cell. Infect. Microbiol. 13. https://doi.org/10.3389/fcimb.2023.1187831
 
 Gjonbalaj, M., Keith, J.W., Do, M.H., Hohl, T.M., Pamer, E.G., Becattini, S., 2020. Antibiotic Degradation by Commensal Microbes Shields Pathogens. Infect Immun 88, e00012-20. https://doi.org/10.1128/IAI.00012-20
 
