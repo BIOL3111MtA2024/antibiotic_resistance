@@ -380,7 +380,7 @@ flow_antibiotic_relative %>%
 ## Ampicillin Trends
 October 25, 2024: Opaque cream colour lawn is seen in Ampicillin Out 2 (a and b), Out 3 (a, b, c), Out 1 (a, b, c). 
 Semi opaque cream colour lawn in Ampicillin Out 2 (c), In 2 (a, b), In 1 (a, b, c), In 3 (a, b, c). See IMG_5585.
-```{r IMG_5585, In3, October 25}
+```{r IMG_5585, fig.cap="In3. Antibiotics from top row to bottom: Ampicillin, Kanamycin, Streptomycin. (Image taken on October 25, 2024)"}
 knitr::include_graphics("~/Documents/github/antibiotic_resistance/Data/Images/2024_10_25/IMG_5585.jpeg")
 ```
 ```
@@ -389,7 +389,7 @@ knitr::include_graphics("~/Documents/github/antibiotic_resistance/Data/Images/20
 October 28, 2024: Opaque cream/mustard lawn seen in Ampicillin In 1 (a, b, c), Out 3 (a, b, c), Out 1 (a, b, c).
 Semi opaque cream colour lawn in Ampicillin Out 2 (a, b, c), In 2 (a, b).
 Darker cream to rust gradient (opaque) seen in In 3 (a, b, c). See IMG_2381.
-```{r IMG_2381, In3, October 28}
+```{r IMG_2381, fig.cap="In3. Antibiotics from top row to bottom: Ampicillin, Kanamycin, Streptomycin. (Image taken on October 28, 2024)"}
 knitr::include_graphics("~/Documents/github/antibiotic_resistance/Data/Images/2024_10_28/IMG_2381.jpeg")
 ```
 
@@ -397,7 +397,7 @@ October 29, 2024: Opaque mustard lawn seen in Out 2 (a, b), Out 1 (a, b, c), In 
 Opaque cream lawn seen in Out 3 (a, b, c), In 2 (a, b).
 Semi opaque cream colour lawn in Ampicillin Out 2 (c).
 Darker cream to rust gradient (opaque) seen in In 3 (a, b, c). See IMG_2397.
-```{r IMG_2397, In3, October 29}
+```{r IMG_2397, fig.cap="In3. Antibiotics from top row to bottom: Ampicillin, Kanamycin, Streptomycin. (Image taken on October 29, 2024)"}
 knitr::include_graphics("~/Documents/github/antibiotic_resistance/Data/Images/2024_10_29/IMG_2397.jpeg")
 ```
 
