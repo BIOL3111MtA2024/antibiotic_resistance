@@ -486,9 +486,9 @@ A similar trend is observed in this image, all of the ampicillin plates contain 
 
 These results align with observations made by Jiang et al. (2017), showing that with increased bacterial growth there is less fungal growth. And, with antibiotics preventing bacterial growth there is more likelihood of fungal growth because fungi have natural antibiotic resistance and there is less competition for resources with bacteria if bacterial growth is lower. 
 
-##Fungi-Fungi Inhibition:
+##Fungal Inhibition:
 
-In our plates, there are some instances of fungi inhibiting other fungal growth, creating zones of inhibition.
+In our plates, there are some instances of fungi inhibiting other fungal growth as well as the growth of mold, creating qualitative zones of inhibition.
 
 For example, lets take a look at In2:
 
@@ -507,7 +507,7 @@ In this image, the second and third streptomycin replicates (bottom row, middle 
 
 What causes this inhibition? 
 
-A possibility is competition for resources, but some fungi are known to produce fungicides, inhibiting the growth of other fungi nearby (Davies et al., 2021). Fungicides have possible applications in agriculture, specifically protecting food stores from fungal infection (Davies et al., 2021). 
+A possibility is competition for resources, but some fungi are known to produce fungicides, inhibiting the growth of other fungi or mold nearby (Davies et al., 2021). Fungicides have possible applications in agriculture, specifically protecting food stores from fungal infection (Davies et al., 2021). 
 
 ##Fungal Growth and location
 
