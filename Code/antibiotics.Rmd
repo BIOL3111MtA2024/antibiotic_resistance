@@ -124,8 +124,9 @@ SackvilleMap <- get_googlemap(center = c(lon = CentreLon, lat = CentreLat),
 ggmap(SackvilleMap)
 
 ```
-with removal of key, first code to call up the plain map has an error, but the map with overlay still working?
+
 ```{r overlap sampling locations}
+# with removal of key, first code to call up the plain map has an error, but the map with overlay still working!
 ggmap(SackvilleMap) +
  geom_point(data = MetaData, aes(x = Lon, y = Lat, colour = InOut), size = 3)  +
   scale_colour_manual(values = c("In" = "darkslategray3", "Out" = "#e0115f"), na.translate = FALSE) +
@@ -153,7 +154,6 @@ Each 100 mm plate had 15 mL of the antibiotic agar added, then was tiled to an a
 ```{r image_map, fig.cap="Schematic diagram of plate set up, drawn on GoodNotes, Ruby Muzzatti"}
 knitr::include_graphics("~/Documents/github/antibiotic_resistance/Data/Images/image_map.jpeg")
 ```
-
 
 The plates, inoculated on October 23, were left at room temperature and images were taken on October 25, October 28, and October 29.
 
@@ -378,7 +378,7 @@ flow_antibiotic_relative %>%
   geom_bar(aes(x = Antibiotic, y = RelativeAbundance, colour = InOut, fill = InOut ), stat = "identity")
 ```
 
-#
+
 # Results, Ruby
 
 ## Ampicillin Trends
@@ -387,34 +387,35 @@ Semi opaque cream colour lawn in Ampicillin Out 2 (c), In 2 (a, b), In 1 (a, b, 
 ```{r IMG_5585, fig.cap="In3. Antibiotics from top row to bottom: Ampicillin, Kanamycin, Streptomycin. (Image taken on October 25, 2024)"}
 knitr::include_graphics("~/Documents/github/antibiotic_resistance/Data/Images/2024_10_25/IMG_5585.jpeg")
 ```
-```
-
 
 October 28, 2024: Opaque cream/mustard lawn seen in Ampicillin In 1 (a, b, c), Out 3 (a, b, c), Out 1 (a, b, c).
 Semi opaque cream colour lawn in Ampicillin Out 2 (a, b, c), In 2 (a, b).
 Darker cream to rust gradient (opaque) seen in In 3 (a, b, c). See IMG_2381.
-```{r IMG_2381, fig.cap="In3. Antibiotics from top row to bottom: Ampicillin, Kanamycin, Streptomycin. (Image taken on October 28, 2024)"}
-knitr::include_graphics("~/Documents/github/antibiotic_resistance/Data/Images/2024_10_28/IMG_2381.jpeg")
+```{rIMG_2381, fig.cap="In3. Antibiotics from top row to bottom: Ampicillin, Kanamycin, Streptomycin. (Image taken on October 28, 2024)"}
+
+knitr::include_graphics("~/Documents/github/antibiotic_resistance/Data/Images/2024_10_28/IMG_2381.jpeg")}
 ```
 
 October 29, 2024: Opaque mustard lawn seen in Out 2 (a, b), Out 1 (a, b, c), In 1 (a, b, c).
 Opaque cream lawn seen in Out 3 (a, b, c), In 2 (a, b).
 Semi opaque cream colour lawn in Ampicillin Out 2 (c).
 Darker cream to rust gradient (opaque) seen in In 3 (a, b, c). See IMG_2397.
+
 ```{r IMG_2397, fig.cap="In3. Antibiotics from top row to bottom: Ampicillin, Kanamycin, Streptomycin. (Image taken on October 29, 2024)"}
 knitr::include_graphics("~/Documents/github/antibiotic_resistance/Data/Images/2024_10_29/IMG_2397.jpeg")
+
 ```
 
 
 ## Hot Pink Microbe
 October 25, 2024: not seen
 
-October 28, 2024: See in Kanamycin Out 3 (a, b), Streptomycin Out 3 (a, b, c). Not quite a lawn, not clear colonies, looks like paint splatter. See IMG_2377.
+October 28, 2024: Seen in Kanamycin Out 3 (a, b), Streptomycin Out 3 (a, b, c). Not quite a lawn, not clear colonies, looks like paint splatter. See IMG_2377.
 ```{r IMG_2377, fig.cap="Note the hot pink microbe appearing as both a paint splatter and colonies. Antibiotics from top row to bottom: Ampicillin, Kanamycin, Streptomycin. (Image taken on October 28, 2024)"}
 knitr::include_graphics("~/Documents/github/antibiotic_resistance/Data/Images/2024_10_28/IMG_2377.jpeg")
 ```
 
-October 29, 2024: See in Kanamycin Out 3 (b, c), Streptomycin Out 3 (a, b, c). Colonies seen on Out 3 (c). See IMG_2394.
+October 29, 2024: Seen in Kanamycin Out 3 (b, c), Streptomycin Out 3 (a, b, c). Colonies seen on Out 3 (c). See IMG_2394.
 ```{r IMG_2394, fig.cap="Note the hot pink microbe appearing as both a paint splatter and colonies. Antibiotics from top row to bottom: Ampicillin, Kanamycin, Streptomycin. (Image taken on October 29, 2024)"}
 knitr::include_graphics("~/Documents/github/antibiotic_resistance/Data/Images/2024_10_29/IMG_2394.jpeg")
 ```
