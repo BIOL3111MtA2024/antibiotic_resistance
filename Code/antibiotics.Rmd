@@ -99,7 +99,7 @@ DataMeta <- left_join(x  = DataSheet, y = MetaData, by = "PlateID")
 ```
 
 ## In-Lab Work, Ruby
-3 samples from inflows and 3 samples from outflows of the water fowl park water body were collected. 
+3 samples from inflows and 3 samples from outflows of Sackville Waterfowl Park were collected. 
 
 ```{r generate map}
 ## Load a map of Tantramar from GoogleMaps 
