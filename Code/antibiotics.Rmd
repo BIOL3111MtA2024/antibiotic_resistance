@@ -439,7 +439,7 @@ knitr::include_graphics("~/Documents/github/antibiotic_resistance/Data/Images/20
 # Discussion, Ruby
 ## Ampicillin Trends
 Unlike the other antibiotics, very little diversity is seen in Ampicillin, no matter the location of the water sample.
-The cream/yellow microbes may have already been resistant to Ampicillin, allowing them to outcomplete other microbes in the water sample, or there may have been less resistance of the other microbes to Ampicillin, allowing the cream/yellow microbes to propagate without competition. The darkening of colour of the cream/rust gradient over time looks to be the microbe drying out, since it doesn't further move along the antibiotic gradient after October 28.
+The cream/yellow microbes may have already been resistant to Ampicillin, allowing them to outcompete other microbes in the water sample, or there may have been less resistance of the other microbes to Ampicillin, allowing the cream/yellow microbes to propagate without competition. The darkening of colour of the cream/rust gradient over time looks to be the microbe drying out, since it doesn't further move along the antibiotic gradient after October 28.
 
 ## Pink Microbe
 ruby note to self: yes this is blank you need to finish this, no nothing was deleted, you didnt write anything
