@@ -445,15 +445,15 @@ ruby note to self: yes this is blank you need to finish this, no nothing was del
 
 # Results and Discussion, Avery
 
-Analyzing the fungi growing on the plates qualitatively
+Analyzing the fungi growing on the plates qualitatively.
 
 ##Background Research:
 
 Fungi are naturally resistant to antibiotics that kill commensal bacteria (which are those naturally occuring in/on the body), and therefore when antibiotics are used there is an increased likelihood of fungal infections (Jiang et al., 2017). With less bacterial growth, there would be more resources available to the fungi. The antibiotics that we tested (ampicillin, kanamycin, streptomycin) all kill commensal bacteria. This would imply that the more bacteria growing on a plate, the less fungal growth would be observed. 
 
-In our experiment, a lot of fungal growth was observed. This could be from contamination during innoculation, but could also be from the presence of spores in the water samples. 
+In our experiment, a lot of fungal growth was observed. This could be from contamination during innoculation, but could also be from the presence of spores in the water samples. It could also be a combination of both. There were multiple types of fungi observed, but they were not definitively identified because we were unable to open the plates and do further analyses due to potential health hazards. 
 
-With this arises the question of whether bacterial or fungal infections are more harmful to ones health, and this really depends on the type of bacteria and fungus present. In a study by Khan et. al. (2024), there overall was higher mortality observed in ICU patients that developed fungal infections than those with bacterial infections. Again, these outcomes do vary greatly with the type of bacteria or fungus because some are more dangerous than others. We were unable to open these plates and identify the bacteria and fungi present because of the potential risk of them being harmful, so in this case we cannot say for sure whether or not the fungi and bacteria were dangerous. It is important to consider that when in contact with water like the samples from Waterfowl Park, Sackville NB, there is potential for both bacterial and fungal exposure. 
+A question that arises is whether bacterial or fungal infections are more harmful to ones health, and this really depends on the type of bacteria and fungus present. In a study by Khan et. al. (2024), there overall was higher mortality observed in ICU patients that developed fungal infections than those with bacterial infections. Again, these outcomes do vary greatly with the type of bacteria or fungus because some are more dangerous than others. We were unable to open these plates and identify the bacteria and fungi present because of the potential risk of them being harmful, so in this case we cannot say for sure whether or not the fungi and bacteria were dangerous. It is important to consider that when in contact with water like the samples from Waterfowl Park, Sackville NB, there is potential for both bacterial and fungal exposure. 
 
 For ampicillin in particular, there are a lot of commensal bacteria that have built up resistance to the antibiotic due to its widespread use in medicine and agriculture (Gjonbalaj et. al., 2020). These bacteria have even been found to degrade ampicillin (Gjonbalaj et. al., 2020), and therefore theoretically this should lead to less fungal growth because there would be less antibiotic present and more commensal bacteria competing for the resources available in the plates. 
 
@@ -497,9 +497,17 @@ Why does fungi-fungi inhibition occur?
 
 ##Fungal Growth and location
 
+Upon observation, there is no apparent trend in the location of fungal growth on the plates (in terms of antibiotic concentration). Along with this, there was no apparent trend/difference in fungal growth between the inlet and outlet locations. 
+
+##Future Applications
+
+This experiment shows evidence that with increased bacterial growth there is less fungal growth, and this idea has some promising applications in healthcare. A study by Cong et. al., (2023) examines the possibility of using different bacteria to combat fungal infections. Specifically, commensal bacteria are mentioned. Supplementation of these bacteria has been shown to decrease the severity of fungal infections (less fungal growth observed) and in some cases even increase organisms' ability to fight these infections through an production of more macrophages for example (Cong et. al., 2023). The fungal growth in this experiment does exhibit this, the more bacterial growth, the less fungal growth present. This is a promising area of study and is very necessary, as there are not a whole lot of antifungal treatments available and drug resistance is a growing problem (Cong et. al., 2023). 
+
 # Bibliography
 
 Bondarczuk, K., Markowicz, A., Piotrowska-Seget, Z., 2016. The urgent need for risk assessment on the antibiotic resistance spread via sewage sludge land application. Environment International 87, 49–55. https://doi.org/10.1016/j.envint.2015.11.011
+
+Cong, L., Chen, C., Mao, S., Han, Z., Zhu, Z., Li, Y., 2023. Intestinal bacteria—a powerful weapon for fungal infections treatment. Front. Cell. Infect. Microbiol. 13. https://doi.org/10.3389/fcimb.2023.1187831
 
 Gjonbalaj, M., Keith, J.W., Do, M.H., Hohl, T.M., Pamer, E.G., Becattini, S., 2020. Antibiotic Degradation by Commensal Microbes Shields Pathogens. Infect Immun 88, e00012-20. https://doi.org/10.1128/IAI.00012-20
 
