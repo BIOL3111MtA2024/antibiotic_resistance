@@ -50,7 +50,9 @@ Relative abundance for flowtype and antibiotic: This will show a detailed breakd
 
 Note, Kingsley is excluding the colonies in a  lawn becaause  a lawn contains infinity number of colonies
 
-# Introduction, Avery
+# Introduction
+
+Antibiotic resistance is a serious problem that is becoming more and more prevalent as the use and misuse of antibiotics increases. Widespread use of antibiotics in medicine has contributed to a rise in antibiotic resistance, and now with an increase in pollution from pharmaceuticals, there is the possibility of amplification of antibiotic resistance in the environment (Bondarczuk et. al., 2016). Antibiotics can enter the environment through pharmaceutical pollution of human and agricultural wastes, as well as from improper disposal of drugs. This experiment investigates if there is any differences in antibiotic resistance between the inflow and outflows present in Waterfowl Park, Sackville, NB. It is hypothesized that antibiotic resistance will be higher in strains found in the outflow samples due to possibility of amplification through conjugation. 
 
 # Materials & Methods
 
