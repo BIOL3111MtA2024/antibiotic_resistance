@@ -39,11 +39,13 @@ DAC was supported by the Canada Research Chairs.
 
 # Overview
 File import functions read files into R objects, commonly data frames.
+I love github
 
-# Overview of relative abundance analysis, Kingsley
+# Overview of analysis, Kingsley
 
 Relative abundance of colonies by flow type (inflow vs. outflow).
 Abundance of colonies by flow type and antibiotics (grouped).
+Interpretation
 Inflow vs. Outflow: This will show whether the colony abundance is higher in the inflow or the outflow of your sample.
 
 Relative abundance for flowtype and antibiotic: This will show a detailed breakdown of colony abundance for each antibiotic within the inflow and outflow.
@@ -51,10 +53,6 @@ Relative abundance for flowtype and antibiotic: This will show a detailed breakd
 Note, Kingsley is excluding the colonies in a  lawn becaause  a lawn contains infinity number of colonies
 
 # Introduction, Avery
-
-Antibiotic resistance is a serious problem that is becoming more and more prevalent as the use and misuse of antibiotics increases. Widespread use of antibiotics in medicine has contributed to a rise in antibiotic resistance, and now with an increase in pollution from pharmaceuticals, there is the possibility of amplification of antibiotic resistance in the environment (Bondarczuk et. al., 2016). Antibiotics can enter the environment through pharmaceutical pollution of human and agricultural wastes, as well as from improper disposal of drugs. This experiment investigates if there is any differences in antibiotic resistance between the inflow and outflows present in Waterfowl Park, Sackville, NB. 
-
-It is hypothesized that antibiotic resistance will be higher in strains found in the outflow samples due to possibility of amplification through conjugation. 
 
 # Materials & Methods
 
@@ -136,9 +134,8 @@ SackvilleMap <- get_googlemap(center = c(lon = CentreLon, lat = CentreLat),
 ggmap(SackvilleMap)
 
 ```
-
+with removal of key, first code to call up the plain map has an error, but the map with overlay still working?
 ```{r overlap sampling locations}
-#with removal of key, first code to call up the plain map has an error, but the map with overlay is still working
 ggmap(SackvilleMap) +
  geom_point(data = MetaData, aes(x = Lon, y = Lat, colour = InOut), size = 3)  +
   scale_colour_manual(values = c("In" = "darkslategray3", "Out" = "#e0115f"), na.translate = FALSE) +
@@ -164,14 +161,10 @@ Each 100 mm plate had 15 mL of the antibiotic agar added, then was tiled to an a
 
 1 mL of each sample was cultured on three antibiotic gradient plates with the tryptic soy agar and antibiotic (streptomycin, ampicillin, kanamycin) gradient ranging from 0 to ~10 mg/mL. 
 
-```{r image_map, fig.cap="Schematic diagram of plate set up, drawn on GoodNotes, Ruby Muzzatti"}
-knitr::include_graphics("~/Documents/github/antibiotic_resistance/Data/Images/image_map.jpeg")
-```
 
 The plates, inoculated on October 23, were left at room temperature and images were taken on October 25, October 28, and October 29.
 
 Ideally, the antibiotic gradient plates serve as their own control since at one end the concentration of the antibiotic is zero (Weinberg, 1959). Lab strain *Escherichia coli* K12 was used as a control.
-
 
 #Results and discussion, Samantha Hallett
 ##libraries needed to do code
@@ -262,7 +255,7 @@ This visualization provides valuable insights into how bacterial growth responds
 The results show the average colony count for three different locations and their corresponding antibiotic treatments. This analysis helps assess the differential effectiveness of the antibiotics across these locations. The colony count is an indicator of bacterial growth, with lower counts generally suggesting higher effectiveness in inhibiting bacterial growth.
 ```{r}
 location_effectiveness <- DataMeta %>%
-  group_by(Location, Antibiotic) %>%
+  group_by(Location, Antibiotic, InOut) %>%
   summarize(
     Avg_ColonyCount = mean(Colony_Number, na.rm = TRUE)
   )
@@ -274,13 +267,19 @@ The data reveals that antibiotic effectiveness varies significantly by location,
 The bar plot visualizes the average colony for the three antibiotics across three different locations, providing insight into how the environmental conditions at each location affect antibiotic effectiveness. The colony count is a measure of bacterial growth, with lower counts suggesting more effective inhibition by the antibiotic.
 ```{r}
 ggplot(location_effectiveness, aes(x = Location, y = Avg_ColonyCount, fill = Antibiotic)) +
-  geom_bar(stat = "identity", position = "dodge") +
+  geom_bar(stat = "identity", position = "dodge") + facet_wrap(~ InOut) +
   labs(
     title = "Environmental Impact on Antibiotic Effectiveness",
-    x = "Location",
+    x = "Location & inout",
     y = "Average Colony Count"
   ) +
   theme_minimal()
+```
+```{r}
+ggplot(your_data, aes(x = `Location & InOut`, y = value, fill = group)) +
+    geom_bar(stat = "identity", position = "dodge") +
+    labs(x = "Location & InOut", y = "Value") +
+    theme_minimal()
 ```
 
 ##Law presence
@@ -355,14 +354,6 @@ ggplot(flow_relative_comparison, aes(x = InOut, y = RelativeAbundance, fill = In
 
 ```
 
-
-
-The inflow  has a higher relative abundance, accounting for approximately 60% of the total bacterial colony in the community.
-The outflow shows a reduced relative abundance of about 40%, indicating a decrease in the proportion of resistant bacteria as water exits the waterfowl park.
-The significant difference between the inlet and outlet indicates that the Sackville Waterfowl Park effectively reduces the relative abundance of antibiotic-resistant bacteria. The reduction suggests that natural processes such as sedimentation, microbial interactions, or dilution play a role in mitigating bacterial population as water moves through the park.
-Despite the reduction, the outlet still contains a considerable proportion of resistant bacteria (~40%). This implies that, though the waterfowlpark does reduce bacterial abundance, it is not entirely effective, and additional measures may be needed to further decrease the bacterial population.
-
-
 ## Analysis of Relative abundance of colonies for flow  type and antibiotics
 
 ```{r Abundance of flowtype  and  antibiotics}
@@ -387,53 +378,27 @@ flow_antibiotic_relative %>%
   geom_bar(aes(x = Antibiotic, y = RelativeAbundance, colour = InOut, fill = InOut ), stat = "identity")
 ```
 
-
-### Ampicillin.
- Ampicillin resistant bacteria are present at the inflow but are almost entirely absent by the time the water exits the park.This suggests that the Sackville Waterfowl Park is effective at reducing Ampicillin-resistant bacteria. Possible ways could be natural filtration through sediment, competition with other bacteria for nutrient which lead to a reduction in their population as water exit the park.
-### Kanamycin 
-Both the relative abundance of Inflow and Outflow quite are large, and the Outflow remains fairly constant. This suggest that there is the presence of Kanamycin-resistant bacteria in both the inflow and outflow of the waterfowl park. But the abundance is a little more pronounce at the inflow. 
-Although the Relative abundance decreases slightly in the outflow, a good number of Kanamycin-resistant bacteria remain, indicating that the park is less effective at reducing these resistant strains.
-This may be due to the robustness of Kanamycin-resistant bacteria or the environmental factors that allow them to persist in the water.
-### Streptomycin 
-Shows the tallest bars in the graph, with the Inflow slightly taller than the Outflow.
-Streptomycin-resistant bacteria are highly prevalent in both the inflow and outflow water. 
-But there is some reduction in resistance from the inflow to outflow, the persistence of high levels suggests that the waterfowl park is not very effective reducing the population of the Streptomycin-resistant bacteria.
-Streptomycin resistant bacteria may have features (e.g., slower degradation or more stable resistance mechanisms) that make it difficult for natural processes to break down the resistant bacteria.
-### Discussion
-The Sackville Waterfowl Park is more effective at reducing bacteria with Ampicillin resistance than Kanamycin or Streptomycin resistance.
-Kanamycin and Streptomycin-resistant bacteria persist in large quantities, suggesting either the park’s natural processes are insufficient to eliminate them or that these bacteria are particularly more stable in this environment.
-### Possible natural mechanisms at play.
-Natural Filtration is one way by which wetlands reduce population of bacteria moving across them. Wetlands and lagoons often remove bacteria through sedimentation and filtration, which seems to be working well for Ampicillin-resistant bacteria(Díaz et al., 2010).
-Another process is by microbial Competition. Microbial communities in the wetland may be outcompeting Ampicillin-resistant strains but may be less effective against Kanamycin and Streptomycin-resistant bacteria.
-Kanamycin and Streptomycin-resistant genes may be more widely distributed or have stable genes, allowing them to persist in the environment even as the water flows through the park.
-### Potential Environmental and Public Health Implications
-The persistence of Kanamycin and Streptomycin resistance is concerning because it suggests that water leaving the park could still carry antibiotic-resistant bacteria into downstream environments.
-If these bacteria enter larger water bodies or agricultural areas, they could pose a risk to human health, wildlife, and the spread of antibiotic resistance.
-
-
+#
 # Results, Ruby
 
 ## Ampicillin Trends
 October 25, 2024: Opaque cream colour lawn is seen in Ampicillin Out 2 (a and b), Out 3 (a, b, c), Out 1 (a, b, c). 
-Semi opaque cream colour lawn in Ampicillin Out 2 (c), In 2 (a, b), In 1 (a, b, c), In 3 (a, b, c). See IMG_5585.
-```{r IMG_5585, In3, October 25}
-knitr::include_graphics("~/Documents/github/antibiotic_resistance/Data/Images/2024_10_25/IMG_5585.jpeg")
+Semi opaque cream colour lawn in Ampicillin Out 2 (c), In 2 (a, b), In 1 (a, b, c), In 3 (a, b, c).See IMG_2381.
+```{r IMG_2381, In3, October 25}
+knitr::include_graphics("~/Documents/github/antibiotic_resistance/Data/Images/2024_10_28/IMG_2381.jpeg")
 ```
 
 October 28, 2024: Opaque cream/mustard lawn seen in Ampicillin In 1 (a, b, c), Out 3 (a, b, c), Out 1 (a, b, c).
 Semi opaque cream colour lawn in Ampicillin Out 2 (a, b, c), In 2 (a, b).
-Darker cream to rust gradient (opaque) seen in In 3 (a, b, c). See IMG_2381.
-```{r IMG_2381, fig.cap="In3. Antibiotics from top row to bottom: Ampicillin, Kanamycin, Streptomycin. (Image taken on October 28, 2024)"}
-knitr::include_graphics("~/Documents/github/antibiotic_resistance/Data/Images/2024_10_28/IMG_2381.jpeg")
+Darker cream to rust gradient (opaque) seen in In 3 (a, b, c). See IMG_2397.
+```{r IMG_2397, In3, October 28}
+knitr::include_graphics("~/Documents/github/antibiotic_resistance/Data/Images/2024_10_29/IMG_2397.jpeg")
 ```
 
 October 29, 2024: Opaque mustard lawn seen in Out 2 (a, b), Out 1 (a, b, c), In 1 (a, b, c).
 Opaque cream lawn seen in Out 3 (a, b, c), In 2 (a, b).
 Semi opaque cream colour lawn in Ampicillin Out 2 (c).
-Darker cream to rust gradient (opaque) seen in In 3 (a, b, c). See IMG_2397.
-```{r IMG_2397, fig.cap="In3. Antibiotics from top row to bottom: Ampicillin, Kanamycin, Streptomycin. (Image taken on October 29, 2024)"}
-knitr::include_graphics("~/Documents/github/antibiotic_resistance/Data/Images/2024_10_29/IMG_2397.jpeg")
-```
+Darker cream to rust gradient (opaque) seen in In 3 (a, b, c).
 
 ## Hot Pink Microbe
 October 25, 2024: not seen
@@ -448,34 +413,29 @@ October 29, 2024: See in Kanamycin Out 3 (b, c), Streptomycin Out 3 (a, b, c). C
 knitr::include_graphics("~/Documents/github/antibiotic_resistance/Data/Images/2024_10_29/IMG_2394.jpeg")
 ```
 
+
 # Discussion, Ruby
 ## Ampicillin Trends
 Unlike the other antibiotics, very little diversity is seen in Ampicillin, no matter the location of the water sample.
-The cream/yellow microbes may have already been resistant to Ampicillin, allowing them to outcompete other microbes in the water sample, or there may have been less resistance of the other microbes to Ampicillin, allowing the cream/yellow microbes to propagate without competition. The darkening of colour of the cream/rust gradient over time looks to be the microbe drying out, since it doesn't further move along the antibiotic gradient after October 28.
+The cream/yellow microbes may have already been resistant to Ampicillin, allowing them to outcomplete other microbes in the water sample, or there may have been less resistance of the other microbes to Ampicillin, allowing the cream/yellow microbes to propagate without competition. The darkening of colour of the cream/rust gradient over time looks to be the microbe drying out, since it doesn't further move along the antibiotic gradient after October 28.
 
 ## Pink Microbe
-This microbe was seen in relatively low abundance (plate coverage) in the Out 3 samples, not including ampicillin. It stuck out because its colour and morphology ("paint splatter) was unique. The small amount of the microbe seen on kanamycin replicate a on October 28th could not be seen the next day on October 29th. The only noticeable change in that plate over the day is the slight growth of fungi on the plate.
-Identification was attempted by looking at known bacteria with similar morphology on TSA (online), but no identification could be made. 
+ruby note to self: yes this is blank you need to finish this, no nothing was deleted, you didnt write anything
 
 
 # Results and Discussion, Avery
 
-Analyzing the fungi growing on the plates qualitatively.
+Analyzing the fungi growing on the plates qualitatively
 
 ##Background Research:
 
-In our experiment, a lot of fungal growth was observed. This could be from contamination during innoculation, but could also be from the presence of spores in the water samples, or it could be a combination of both. There were multiple types of fungi observed, but they were not definitively identified because we were unable to open the plates and do further analyses due to potential health hazards. 
-
-Fungal infections are a very prevalent cause of illness today, both in humans but also in many organisms in a variety of ecosystems. Particularly, fungal infections are threatening biodiversity due to mass mortalities and also food security due to fungal infection of crops (Fisher et. al., 2012). Fungal infections are difficult to detect, and are hard to track because spores released to the environment can last for a very long time before infecting an organism (Fisher et. al., 2012). Therefore, globalization is actually a major issue in terms of the spread of spores, because spores can survive transportation across the globe (Fisher et. al., 2012). Because of the negative impact fungal infections are creating in human health and the level of biodiversity, we need ways to combat fungal growth. Unfortunately at the moment, there are not a lot of options to do so. For treating fungal infections, there are only 3 classes of drugs available, many of which have undesirable side effects and do not work properly because of an increase in resistance to drugs (Campoy and Adrio, 2017). 
-
-
-A question that arises is whether bacterial or fungal infections are more harmful to ones health, would you rather have more bacterial growth or fungal growth? This really depends on the type of bacteria and fungus present. In a study by Khan et. al. (2024), there overall was higher mortality observed in ICU patients that developed fungal infections than those with bacterial infections. Again, these outcomes do vary greatly with the type of bacteria or fungus because some are more dangerous than others. We were unable to open these plates and identify the bacteria and fungi present because of the potential risk of them being harmful, so in this case we cannot say for sure whether or not the fungi and bacteria were dangerous. It is important to consider that when in contact with water like the samples from Waterfowl Park, Sackville NB, there is potential for both bacterial and fungal exposure. 
-
 Fungi are naturally resistant to antibiotics that kill commensal bacteria (which are those naturally occuring in/on the body), and therefore when antibiotics are used there is an increased likelihood of fungal infections (Jiang et al., 2017). With less bacterial growth, there would be more resources available to the fungi. The antibiotics that we tested (ampicillin, kanamycin, streptomycin) all kill commensal bacteria. This would imply that the more bacteria growing on a plate, the less fungal growth would be observed. 
 
-For ampicillin in particular, there are a lot of commensal bacteria that have built up resistance to the antibiotic due to its widespread use in medicine and agriculture (Gjonbalaj et. al., 2020). These bacteria have even been found to degrade ampicillin (Gjonbalaj et. al., 2020), and therefore theoretically this should lead to less fungal growth because there would be less antibiotic present and more commensal bacteria competing for the resources available in the plates. 
+In our experiment, a lot of fungal growth was observed. This could be from contamination during innoculation, but could also be from the presence of spores in the water samples. 
 
-In our experiment, this was observed. 
+With this arises the question of whether bacterial or fungal infections are more harmful to ones health, and this really depends on the type of bacteria and fungus present. In a study by Khan et. al. (2024), there overall was higher mortality observed in ICU patients that developed fungal infections than those with bacterial infections. Again, these outcomes do vary greatly with the type of bacteria or fungus because some are more dangerous than others. We were unable to open these plates and identify the bacteria and fungi present because of the potential risk of them being harmful, so in this case we cannot say for sure whether or not the fungi and bacteria were dangerous. It is important to consider that when in contact with water like the samples from Waterfowl Park, Sackville NB, there is potential for both bacterial and fungal exposure. 
+
+For ampicillin in particular, there are a lot of commensal bacteria that have built up resistance to the antibiotic due to its widespread use in medicine and agriculture (Gjonbalaj et. al., 2020). These bacteria have even been found to degrade ampicillin (Gjonbalaj et. al., 2020), and therefore theoretically this should lead to less fungal growth because there would be less antibiotic present and more commensal bacteria competing for the resources available in the plates. 
 
 ##Taking a closer look at In3:
 
@@ -495,9 +455,9 @@ A similar trend is observed in this image, all of the ampicillin plates contain 
 
 These results align with observations made by Jiang et al. (2017), showing that with increased bacterial growth there is less fungal growth. And, with antibiotics preventing bacterial growth there is more likelihood of fungal growth because fungi have natural antibiotic resistance and there is less competition for resources with bacteria if bacterial growth is lower. 
 
-##Fungal Inhibition:
+##Fungi-Fungi Inhibition:
 
-In our plates, there are some instances of fungi inhibiting other fungal growth as well as the growth of mold, creating qualitative zones of inhibition.
+In our plates, there are some instances of fungi inhibiting other fungal growth, creating zones of inhibition.
 
 For example, lets take a look at In2:
 
@@ -505,8 +465,7 @@ For example, lets take a look at In2:
 knitr::include_graphics("~/Documents/github/antibiotic_resistance/Data/Images/2024_10_28/IMG_2375.jpeg")
 ```
 
-In this image, you can see in the third streptomycin replicate (bottom right) that there is inhibition of one fungi on the growth of another. The fluffy white fungus has grown around the circular, more beige fungus, leaving what can be described as a zone of inhibition between the two where there is no growth (edges of the two fungi do not extend and meet). 
-Here is another example in Out1:
+In this image, you can see in the third streptomycin replicate (bottom right) that there is inibition of one fungi on the growth of another. The fluffy white fungus has grown around the circular, more beige fungus, leaving what can be described as a zone of inhibition between the two where there is no growth (edges of the two fungi do not extend and meet). 
 
 ```{r Calling up Image for Out1, October 29, 2024}}
 knitr::include_graphics("~/Documents/github/antibiotic_resistance/Data/Images/2024_10_29/IMG_2400.jpeg")
@@ -514,35 +473,13 @@ knitr::include_graphics("~/Documents/github/antibiotic_resistance/Data/Images/20
 
 In this image, the second and third streptomycin replicates (bottom row, middle and far right) also show fungi-fungi inhibition. There are similar zones of inhibition forming between different fungi growing on these plates. In the second streptomycin replicate, you can see the beige and white fungi will not extend and grow near each other (this image was from the last day of data collection so any extension that could have happened would have at this point), and in the third replicate a similar event can be seen with the beige fungus and the white fungi with green centres. 
 
-What causes this inhibition? 
-
-A possibility is the competition for resources, but some fungi are known to produce fungicides, inhibiting the growth of other fungi or mold nearby (Davies et al., 2021). Fungicides have possible applications in agriculture, specifically protecting food stores from fungal infection (Davies et al., 2021). 
+Why does fungi-fungi inhibition occur?
 
 ##Fungal Growth and location
-
-Upon observation, there is no apparent trend in the location of fungal growth on the plates (in terms of antibiotic concentration). Along with this, there was no apparent trend/difference in fungal growth between the inlet and outlet locations. This makes sense because, as described by Jiang et al. (2017), fungi can have natural resistance to antibiotics. If the antibiotic concentration did play a role in the location of fungal growth (unlikely), no evidence of a trend could imply that significant diffusion of the antibiotic gradient in the plates has occurred. 
-
-##Future Applications
-
-This experiment shows evidence that with increased bacterial growth there is less fungal growth, and this idea has some promising applications in healthcare. A study by Cong et. al., (2023) examines the possibility of using different bacteria to combat fungal infections. Specifically, commensal bacteria are mentioned. Supplementation of these bacteria has been shown to decrease the severity of fungal infections (less fungal growth observed) and in some cases even increase organisms' ability to fight these infections through an production of more macrophages for example (Cong et. al., 2023). The fungal growth in this experiment does exhibit this, the more bacterial growth, the less fungal growth present. This is a promising area of study and is very necessary, as there are not a whole lot of antifungal treatments available and drug resistance is a growing problem (Cong et. al., 2023). 
-
-##Conclusions
-
-In conclusion, while fungi were not the main focus of this experiment and growth was observed as a byproduct of contamination, interesting results were observed when looking at fungal growth. Trends of increased fungal growth with a decrease in bacterial growth were observed, highlighting the prevalence of susceptibility to fungal infection in the presence of antibiotics that kill bacteria. Along with this, some fungi-fungi inhibition was observed in a portion of the plates. There was also no localization of fungal growth due to their natural antibiotic resistance. These non-target observations point out the fact that while bacterial infections may be of great importance, fungal infections are also serious and need attention as there are some major gaps in knowledge present in the field for both medical and environmental applications. The possibility of using bacteria supplementation is a promising future mode of treatment for dangerous fungal infections, which could replace some of the inadequate treatments used today. Implementing such techniques has the potential to save lives and preserve biodiversity. 
 
 # Bibliography
 
 Bondarczuk, K., Markowicz, A., Piotrowska-Seget, Z., 2016. The urgent need for risk assessment on the antibiotic resistance spread via sewage sludge land application. Environment International 87, 49–55. https://doi.org/10.1016/j.envint.2015.11.011
-
-Campoy, S., Adrio, J.L., 2017. Antifungals. Biochemical Pharmacology, Antibiotics - Meeting the Challenges of 21st Century Health Care: Part I 133, 86–96. https://doi.org/10.1016/j.bcp.2016.11.019
-
-Cong, L., Chen, C., Mao, S., Han, Z., Zhu, Z., Li, Y., 2023. Intestinal bacteria—a powerful weapon for fungal infections treatment. Front. Cell. Infect. Microbiol. 13. https://doi.org/10.3389/fcimb.2023.1187831
-
-Davies, C.R., Wohlgemuth, F., Young, T., Violet, J., Dickinson, M., Sanders, J.-W., Vallieres, C., Avery, S.V., 2021. Evolving challenges and strategies for fungal control in the food supply chain. Fungal Biol Rev 36, 15–26. https://doi.org/10.1016/j.fbr.2021.01.003
-
-Díaz, F. J., O’Geen, A. T., & Dahlgren, R. A. (2010). Efficacy of constructed wetlands for removal of bacterial contamination from agricultural return flows. Agricultural Water Management, 97(11), 1813–1821. https://doi.org/10.1016/j.agwat.2010.06.015
-
-Fisher, M.C., Henk, D.A., Briggs, C.J., Brownstein, J.S., Madoff, L.C., McCraw, S.L., Gurr, S.J., 2012. Emerging fungal threats to animal, plant and ecosystem health. Nature 484, 186–194. https://doi.org/10.1038/nature10947
 
 Gjonbalaj, M., Keith, J.W., Do, M.H., Hohl, T.M., Pamer, E.G., Becattini, S., 2020. Antibiotic Degradation by Commensal Microbes Shields Pathogens. Infect Immun 88, e00012-20. https://doi.org/10.1128/IAI.00012-20
 
