@@ -379,22 +379,28 @@ flow_antibiotic_relative %>%
 
 ## Ampicillin Trends
 October 25, 2024: Opaque cream colour lawn is seen in Ampicillin Out 2 (a and b), Out 3 (a, b, c), Out 1 (a, b, c). 
-Semi opaque cream colour lawn in Ampicillin Out 2 (c), In 2 (a, b), In 1 (a, b, c), In 3 (a, b, c).See IMG_2381.
-```{r IMG_2381, In3, October 25}
-knitr::include_graphics("~/Documents/github/antibiotic_resistance/Data/Images/2024_10_28/IMG_2381.jpeg")
+Semi opaque cream colour lawn in Ampicillin Out 2 (c), In 2 (a, b), In 1 (a, b, c), In 3 (a, b, c). See IMG_5585.
+```{r IMG_5585, In3, October 25}
+knitr::include_graphics("~/Documents/github/antibiotic_resistance/Data/Images/2024_10_25/IMG_5585.jpeg")
 ```
+```
+
 
 October 28, 2024: Opaque cream/mustard lawn seen in Ampicillin In 1 (a, b, c), Out 3 (a, b, c), Out 1 (a, b, c).
 Semi opaque cream colour lawn in Ampicillin Out 2 (a, b, c), In 2 (a, b).
-Darker cream to rust gradient (opaque) seen in In 3 (a, b, c). See IMG_2397.
-```{r IMG_2397, In3, October 28}
-knitr::include_graphics("~/Documents/github/antibiotic_resistance/Data/Images/2024_10_29/IMG_2397.jpeg")
+Darker cream to rust gradient (opaque) seen in In 3 (a, b, c). See IMG_2381.
+```{r IMG_2381, In3, October 28}
+knitr::include_graphics("~/Documents/github/antibiotic_resistance/Data/Images/2024_10_28/IMG_2381.jpeg")
 ```
 
 October 29, 2024: Opaque mustard lawn seen in Out 2 (a, b), Out 1 (a, b, c), In 1 (a, b, c).
 Opaque cream lawn seen in Out 3 (a, b, c), In 2 (a, b).
 Semi opaque cream colour lawn in Ampicillin Out 2 (c).
-Darker cream to rust gradient (opaque) seen in In 3 (a, b, c).
+Darker cream to rust gradient (opaque) seen in In 3 (a, b, c). See IMG_2397.
+```{r IMG_2397, In3, October 29}
+knitr::include_graphics("~/Documents/github/antibiotic_resistance/Data/Images/2024_10_29/IMG_2397.jpeg")
+```
+
 
 ## Hot Pink Microbe
 October 25, 2024: not seen
@@ -413,7 +419,7 @@ knitr::include_graphics("~/Documents/github/antibiotic_resistance/Data/Images/20
 # Discussion, Ruby
 ## Ampicillin Trends
 Unlike the other antibiotics, very little diversity is seen in Ampicillin, no matter the location of the water sample.
-The cream/yellow microbes may have already been resistant to Ampicillin, allowing them to outcomplete other microbes in the water sample, or there may have been less preexisting resistance of the other microbes to Ampicillin, allowing the cream/yellow microbes to propagate (and/or develop further antibiotic resistance) without competition. The darkening of colour of the cream/rust gradient over time looks to be the microbe drying out, since it doesn't further move along the antibiotic gradient after October 28 (seems to have reached carrying capacity at this time).
+The cream/yellow microbes may have already been resistant to Ampicillin, allowing them to outcompete other microbes in the water sample, or there may have been less preexisting resistance of the other microbes to Ampicillin, allowing the cream/yellow microbes to propagate (and/or develop further antibiotic resistance) without competition. The darkening of colour of the cream/rust gradient over time looks to be the microbe drying out, since it doesn't further move along the antibiotic gradient after October 28 (seems to have reached carrying capacity at this time).
 
 ## Pink Microbe
 This microbe was seen in relatively low abundance (plate coverage) in the Out 3 samples, not including ampicillin. It stuck out because its colour and morphology ("paint splatter) was unique. The small amount of the microbe seen on kanamycin replicate a on October 28th could not be seen the next day on October 29th. The only noticeable change in that plate over the day is the slight growth of fungi on the plate.
