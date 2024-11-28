@@ -41,16 +41,6 @@ DAC was supported by the Canada Research Chairs.
 File import functions read files into R objects, commonly data frames.
 I love github
 
-# Overview of analysis, Kingsley
-
-Relative abundance of colonies by flow type (inflow vs. outflow).
-Abundance of colonies by flow type and antibiotics (grouped).
-Interpretation
-Inflow vs. Outflow: This will show whether the colony abundance is higher in the inflow or the outflow of your sample.
-
-Relative abundance for flowtype and antibiotic: This will show a detailed breakdown of colony abundance for each antibiotic within the inflow and outflow.
-
-Note, Kingsley is excluding the colonies in a  lawn becaause  a lawn contains infinity number of colonies
 
 # Introduction, Avery
 
@@ -316,6 +306,17 @@ ggplot(DataMeta, aes(x = AbxConcReached_mgmL, y = Colony_Number, color = Antibio
 
 # Result, Kingsley 
 
+# Overview of analysis, Kingsley
+
+Relative abundance of colonies by flow type (inflow vs. outflow).
+Abundance of colonies by flow type and antibiotics (grouped).
+Interpretation
+Inflow vs. Outflow: This will show whether the colony abundance is higher in the inflow or the outflow of your sample.
+
+Relative abundance for flowtype and antibiotic: This will show a detailed breakdown of colony abundance for each antibiotic within the inflow and outflow.
+
+Note, Kingsley is excluding the colonies in a  lawn becaause  a lawn contains infinity number of colonies
+
 ## Relative abundance of colonies by flow type (inflow vs. outflow)
 ```{r}
 flow_relative_comparison <- DataMeta %>%
@@ -327,7 +328,7 @@ flow_relative_comparison <- DataMeta %>%
   ) %>%
   mutate(
     OverallTotal = sum(TotalCount),             # Calculate the grand total of all groups
-    RelativeAbundance = (TotalCount / OverallTotal)*100  # Calculate relative abundance for each InOut
+    RelativeAbundance = (TotalCount / OverallTotal)  # Calculate relative abundance for each InOut
   )
 
 ```
@@ -335,22 +336,17 @@ flow_relative_comparison <- DataMeta %>%
   
 ## Plot of flow type against relative Abundance of colonies  
 ```{r Flow_relative}
-#flow_relative %>%
-  #ggplot()+
-  #geom_bar(aes(x = InOut, y = RelativeAbundance, colour = InOut, fill = InOut ), stat = "identity")
-
-library(ggplot2)
 
 ggplot(flow_relative_comparison, aes(x = InOut, y = RelativeAbundance, fill = InOut)) +
-  geom_bar(stat = "identity", color = "black") +   # Bar plot using pre-calculated values
+ geom_bar(stat = "identity", color = "black") +   # Bar plot using pre-calculated values
   labs(
     title = "Relative Abundance by Flow Type (In vs Out)",
     x = "Flow Type (In/Out)",
     y = "Relative Abundance",
-    fill = "Flow Type"
-  ) +
+    fill = "Flow Type" ) +
   scale_y_continuous(labels = scales::percent) +    # Display y-axis as percentages
   theme_minimal()                                   # Clean plot style
+
 
 ```
 
